@@ -1,0 +1,20 @@
+\Preamble{xhtml}
+\makeatletter
+
+% \Css{body{
+%   font-size:18px;
+%   font-size-adjust: 0.5;
+% }}
+\Configure{@HEAD}{\HCode{\Hnewline<link rel="stylesheet" href="org.css">}}
+\Configure{@HEAD}{\HCode{\Hnewline<script src="org.js"></script>}}
+
+\ConfigureEnv{definition}{\HCode{<div class="definition">}}{\HCode{</div>}}{}{}
+\ConfigureEnv{dummy}{\HCode{<div class="dummy">}}{\HCode{</div>}}{}{}
+\ConfigureEnv{corollary}{\HCode{<div class="corollary">}}{\HCode{</div>}}{}{}
+\ConfigureEnv{lemma}{\HCode{<div class="lemma">}}{\HCode{</div>}}{}{}
+\ConfigureEnv{proof}{\HCode{<div class="proof">}}{\HCode{</div>}}{}{}
+\ConfigureEnv{my_example}{\HCode{<div class="my_example">}}{\HCode{</div>}}{}{}
+
+\makeatother
+\begin{document}
+\EndPreamble
