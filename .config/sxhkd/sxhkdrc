@@ -32,7 +32,6 @@ super + x ; {n,a,x}
       add_magnet.sh "$(xclip -selection clipboard -o)",\
       last_scrot=~/data/images/scrots/$(ls -t ~/data/images/scrots | head -1 | tr -d '\n'); ~/.local/bin/pix2tex "$last_scrot" --show > /tmp/pix2tex; tex=$(sed 's/^.*: //' /tmp/pix2tex); notify-send "copied $tex"}
 
-
 super + ctrl + p ; {i, u}
     {install_program.sh,\
      ~/work/scripts/terminal_with_cmd.sh "sudo pacman -Syu"; notify-send -t 30000 'updated system'}
@@ -51,11 +50,10 @@ super + {e,shift+e}
 # screenshot
 super + {_,shift +} p
     file=$(echo ~/data/images/scrots/`date | tr " " "_"`.png) && \
-    notif_str="screenshot taken"; {scrot, notif_str="image of selection taken"; sleep 0.2; scrot -s} "$file" && echo -n "$file" | xclip -selection c && notify-send $notif_str && sxiv "$file"
+    notif_str="screenshot taken"; {maim, notif_str="image of selection taken"; sleep 0.2; maim -s} "$file" && echo -n "$file" | xclip -selection c && notify-send $notif_str && sxiv "$file"
 
 super + g ; {R,r,s,w}
-    {ffmpeg -video_size 3286x1080 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i default "/home/$USER/recording_$(date | tr " " "_").mkv" & notify-send "started recording", \
-    #ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 -f pulse -ac 2 -i default "/home/$USER/recording_$(date | tr " " "_").mkv" & notify-send "started recording", \
+    {ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 -f pulse -ac 2 -i default "/home/$USER/recording_$(date | tr " " "_").mkv" & notify-send "started recording", \
     ffmpeg -video_size 1920x1080 -framerate 60 -f x11grab -i :0.0 -f pulse -ac 2 -i default "/home/$USER/recording_$(date | tr " " "_").mkv" & notify-send "started recording", \
     pkill ffmpeg && notify-send "stopped recording", \
     notify-send "started recording from webcam" && ffmpeg -f v4l2 -video_size 1280x720 -i /dev/video0 -f pulse -i default -c:v libx264 -preset ultrafast -c:a aac "$HOME/recording_$(date | tr " " "_").mkv"}
@@ -76,8 +74,8 @@ super + s; {l,h,s}
 
 super + s; {w, W, q, f, a}
     {mpv_lyrics.sh,\
-     terminal_with_cmd.sh 'nvim ~/brain/lyrics/"$(current_spotify_song.sh)"',\
-     rm "/home/mahmooz/brain/lyrics/$(current_spotify_song.sh)" && notify-send "removed lyrics for $(current_spotify_song.sh)" || notify-send "lyrics dont exist for $(current_spotify_song.sh)",\
+     terminal_with_cmd.sh 'nvim "$(mpv_lyrics_file.sh)"',\
+     rm "$(mpv_lyrics_file.sh)"&& notify-send "removed lyrics for $(current_mpv_track.sh)" || notify-send "lyrics dont exist for $(current_mpv_track.sh)",\
      choice=$(awk '\{print FILENAME ":" $0\}' ~/brain/lyrics/* | rofi -dmenu -i -p lyrics); notify-send "$(echo $choice | cut -d ':' -f1 | rev | cut -d '/' -f1 | rev)" "$(cat "$(echo $choice | cut -d ':' -f1)")"}
 super + s; {d, x, c}
      {~/work/spotify_scripts/rofi_play_track.sh,\
