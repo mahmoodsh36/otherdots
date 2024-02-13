@@ -7,8 +7,8 @@ local utils = require("utils")
 --- keybinds
 ---------------------------------------------------------------
 M.tmux_keybinds = {
-	{ key = "k", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
-	{ key = "j", mods = "ALT", action = act({ CloseCurrentTab = { confirm = true } }) },
+	{ key = "t", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+	{ key = "w", mods = "ALT", action = act({ CloseCurrentTab = { confirm = true } }) },
 	{ key = "h", mods = "ALT", action = act({ ActivateTabRelative = -1 }) },
 	{ key = "l", mods = "ALT", action = act({ ActivateTabRelative = 1 }) },
 	{ key = "h", mods = "ALT|CTRL", action = act({ MoveTabRelative = -1 }) },

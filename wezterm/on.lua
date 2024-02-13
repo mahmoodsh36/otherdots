@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local utils = require("utils")
 local keybinds = require("keybinds")
-local scheme = wezterm.get_builtin_color_schemes()["nord"]
+local scheme = wezterm.get_builtin_color_schemes()["Nature Suede"]
 local act = wezterm.action
 
 -- selene: allow(unused_variable)
@@ -32,43 +32,43 @@ end
 ---------------------------------------------------------------
 --- wezterm on
 ---------------------------------------------------------------
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local title = create_tab_title(tab, tabs, panes, config, hover, max_width)
+--wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	--local title = create_tab_title(tab, tabs, panes, config, hover, max_width)
 
-	-- selene: allow(undefined_variable)
-	local solid_left_arrow = utf8.char(0x2590)
-	-- selene: allow(undefined_variable)
-	local solid_right_arrow = utf8.char(0x258c)
-	-- https://github.com/wez/wezterm/issues/807
-	-- local edge_background = scheme.background
-	-- https://github.com/wez/wezterm/blob/61f01f6ed75a04d40af9ea49aa0afe91f08cb6bd/config/src/color.rs#L245
-	local edge_background = "#2e3440"
-	local background = scheme.ansi[1]
-	local foreground = scheme.ansi[5]
+	---- selene: allow(undefined_variable)
+	--local solid_left_arrow = utf8.char(0x2590)
+	---- selene: allow(undefined_variable)
+	--local solid_right_arrow = utf8.char(0x258c)
+	---- https://github.com/wez/wezterm/issues/807
+	---- local edge_background = scheme.background
+	---- https://github.com/wez/wezterm/blob/61f01f6ed75a04d40af9ea49aa0afe91f08cb6bd/config/src/color.rs#L245
+	--local edge_background = "#2e3440"
+	--local background = scheme.ansi[1]
+	--local foreground = scheme.ansi[5]
 
-	if tab.is_active then
-		background = scheme.brights[1]
-		foreground = scheme.brights[8]
-	elseif hover then
-		background = scheme.cursor_bg
-		foreground = scheme.cursor_fg
-	end
-	local edge_foreground = background
+	--if tab.is_active then
+		--background = scheme.brights[1]
+		--foreground = scheme.brights[8]
+	--elseif hover then
+		--background = scheme.cursor_bg
+		--foreground = scheme.cursor_fg
+	--end
+	--local edge_foreground = background
 
-	return {
-		{ Attribute = { Intensity = "Bold" } },
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = solid_left_arrow },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
-		{ Text = title },
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = solid_right_arrow },
-		{ Attribute = { Intensity = "Normal" } },
-	}
-end)
+	--return {
+		--{ Attribute = { Intensity = "Bold" } },
+		--{ Background = { Color = edge_background } },
+		--{ Foreground = { Color = edge_foreground } },
+		--{ Text = solid_left_arrow },
+		--{ Background = { Color = background } },
+		--{ Foreground = { Color = foreground } },
+		--{ Text = title },
+		--{ Background = { Color = edge_background } },
+		--{ Foreground = { Color = edge_foreground } },
+		--{ Text = solid_right_arrow },
+		--{ Attribute = { Intensity = "Normal" } },
+	--}
+--end)
 
 -- https://github.com/wez/wezterm/issues/1680
 local function update_window_background(window, pane)
@@ -139,7 +139,7 @@ wezterm.on("update-right-status", function(window, pane)
 	-- local tmux = update_tmux_style_tab(window, pane)
 	local ssh = update_ssh_status(window, pane)
 	local copy_mode = display_copy_mode(window, pane)
-	update_window_background(window, pane)
+	-- update_window_background(window, pane)
 	local status = utils.merge_lists(ssh, copy_mode)
 	window:set_right_status(wezterm.format(status))
 end)
