@@ -2,7 +2,7 @@
 
 ln -sf "$HOME/work/otherdots/.gitconfig" "$HOME/"
 
-for filename in .xinitrc .zshrc .zprofile .Xresources .vimrc .tmux.conf; do
+for filename in .xinitrc .zshrc .zprofile .Xresources .tmux.conf; do
 	ln -sf "$HOME/work/otherdots/$filename" "$HOME/"
 done
 
@@ -17,6 +17,3 @@ ln -sf "$HOME/work/otherdots/.config/transmission-daemon" "$HOME/.config/transmi
 mkdir "$HOME/.config/guix/"
 ln -sf "$HOME/work/otherdots/channels.scm" "$HOME/.config/guix/"
 sudo ln -sf "$HOME/work/otherdots/config.scm" "/etc/config.scm"
-
-mkdir "$HOME/.config/nvim/"
-ln -sf "$HOME/work/otherdots/.vimrc" "$HOME/.config/nvim/init.vim"
