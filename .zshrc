@@ -24,7 +24,7 @@ export KEYTIMEOUT=1
 bindkey '^r' history-incremental-search-backward
 bindkey '^f' history-incremental-search-forward
 autoload edit-command-line; zle -N edit-command-line
-#bindkey -M vicmd v edit-command-line
+bindkey -M vicmd v edit-command-line
 
 # auto completion
 autoload -Uz compinit && compinit
