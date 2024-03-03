@@ -1,3 +1,4 @@
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 # disabled vi mode in zsh for now, i use emacs vterm
 # cursor handling for vi-mode
 function zle-keymap-select zle-line-init zle-line-finish {
