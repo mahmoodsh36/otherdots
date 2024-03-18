@@ -8,10 +8,10 @@ super + x ; {e,w,s,j,k,f,p}
      rofi_select_emoji.sh, \
      ~/work/scripts/kill_process.sh, \
      notify-send 'launched vifm' && terminal_with_cmd.sh 'vifm; exit',\
-     kitty -e zsh -i -c pulsemixer & notify-send 'launched pulsemixer'}
+     terminal_with_cmd.sh pulsemixer & notify-send 'launched pulsemixer'}
 
 super + x ; {v,d,t,l,u,g}
-     {kitty -e zsh -i -c vim & notify-send 'launched vim', \
+     {terminal_with_cmd.sh vim & notify-send 'launched vim', \
      notify-send 'launched discord' && discord, \
      notify-send 'launched nmtui' && terminal_with_cmd.sh 'sudo nmcli device wifi rescan; sudo nmcli device wifi list; sudo nmtui',\
      xset dpms force off,\
