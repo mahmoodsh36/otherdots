@@ -3,7 +3,7 @@ super + Return
 
 super + x ; {e,w,s,j,k,f,p}
     {notify-send "launched emacs" && emacs, \
-     google-chrome-stable & notify-send "launched google-chrome-stable", \
+     brave & notify-send "launched brave", \
      notify-send "launched Spotify 🎶🎵" && spotify || flatpak run com.spotify.Client, \
      rofi_select_emoji.sh, \
      ~/work/scripts/kill_process.sh, \
@@ -79,8 +79,8 @@ super + s; {w, W, q, f, a}
      choice=$(awk '\{print FILENAME ":" $0\}' ~/brain/lyrics/* | rofi -dmenu -i -p lyrics); notify-send "$(echo $choice | cut -d ':' -f1 | rev | cut -d '/' -f1 | rev)" "$(cat "$(echo $choice | cut -d ':' -f1)")"}
 super + s; {d, x, c}
      {~/work/spotify_scripts/rofi_play_track.sh,\
-     google-chrome-stable "https://www.last.fm/music/$(current_spotify_song.sh | rev | cut -d '-' -f1 | rev | cut -c2-)",\
-     google-chrome-stable "https://www.metal-archives.com/albums/$(current_spotify_song.sh | rev | cut -d '-' -f1 | rev | cut -c2-)"}
+     brave "https://www.last.fm/music/$(current_spotify_song.sh | rev | cut -d '-' -f1 | rev | cut -c2-)",\
+     brave "https://www.metal-archives.com/albums/$(current_spotify_song.sh | rev | cut -d '-' -f1 | rev | cut -c2-)"}
 
 super + s; {a,e,r}
     {setxkbmap ara,\
