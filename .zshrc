@@ -1,4 +1,4 @@
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return # this breaks emacs M-x shell
+# [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return # this breaks emacs M-x shell
 # disabled vi mode in zsh for now, i use emacs vterm
 # cursor handling for vi-mode
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -16,8 +16,6 @@ zle -N zle-keymap-select
 
 # vim keys
 bindkey -v
-export KEYTIMEOUT=1
-bindkey -e
 
 # bindings
 #bindkey '^P' up-history
@@ -170,9 +168,9 @@ fi
 # stop zsh from creating ~/.zcompdump (by changing the location)
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-# add ### cwd to commands, for history parsing
-function _-accept-line() {
-    [[ -z "${BUFFER}" ]] || [[ "${BUFFER}" =~ "### ${(q)PWD}\$" ]] || BUFFER="${BUFFER} ### ${PWD}"
-    zle .accept-line
-}
-zle -N accept-line _-accept-line
+# add ### cwd to commands, for history parsing, breaks emacs shell/term...
+#function _-accept-line() {
+#    [[ -z "${BUFFER}" ]] || [[ "${BUFFER}" =~ "### ${(q)PWD}\$" ]] || BUFFER="${BUFFER} ### ${PWD}"
+#    zle .accept-line
+#}
+#zle -N accept-line _-accept-line
