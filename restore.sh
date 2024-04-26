@@ -2,7 +2,7 @@
 
 ln -sf "$HOME/work/otherdots/.gitconfig" "$HOME/"
 
-for filename in .xinitrc .zshrc .zprofile .Xresources .tmux.conf; do
+for filename in .xinitrc .zshrc .zprofile .Xresources .tmux.conf .pythonrc; do
 	ln -sf "$HOME/work/otherdots/$filename" "$HOME/"
 done
 
