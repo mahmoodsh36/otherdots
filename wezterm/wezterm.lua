@@ -154,6 +154,7 @@ local config = {
 	-- https://github.com/wez/wezterm/issues/2756
 	webgpu_preferred_adapter = gpus[1],
 	front_end = "OpenGL",
+        audible_bell = "Disabled"
 }
 
 for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
