@@ -19,3 +19,4 @@ export PATH="$HOME/.local/bin/:$PATH"
 
 export PYTHONSTARTUP=$HOME/.pythonrc
 export PYTHON_HISTORY_FILE=$HOME/brain/python_history
+export PYTHONHISTORY=$HOME/brain/python_history
