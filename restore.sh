@@ -8,11 +8,14 @@ done
 
 mkdir "$HOME/.config/"
 for filename in alacritty compton.conf gtk-3.0 mimeapps.list mpv vifm qutebrowser kitty\
-	rofi sxhkd sxiv user-dirs.dirs transmission-daemon zathura; do
+	rofi sxhkd sxiv user-dirs.dirs zathura; do
 	ln -sf "$HOME/work/otherdots/.config/$filename" "$HOME/.config/"
 done
 
-ln -sf "$HOME/work/otherdots/.config/transmission-daemon" "$HOME/.config/transmission"
+mkdir ~/.config/transmission-daemon
+mkdir ~/.config/transmission
+ln -sf "$HOME/work/otherdots/.config/transmission-daemon/settings.json" "$HOME/.config/transmission/"
+ln -sf "$HOME/work/otherdots/.config/transmission-daemon/settings.json" "$HOME/.config/transmission-daemon/"
 
 mkdir "$HOME/.config/guix/"
 ln -sf "$HOME/work/otherdots/channels.scm" "$HOME/.config/guix/"
