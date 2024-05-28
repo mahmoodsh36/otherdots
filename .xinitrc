@@ -17,6 +17,7 @@ xrdb -load ~/.Xresources &
 
 # disable beep sound
 sudo rmmod pcspkr &
+sxhkd &
 
 # touchegg & # run touchegg for touch gestures
 
