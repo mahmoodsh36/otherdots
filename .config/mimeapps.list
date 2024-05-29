@@ -21,6 +21,7 @@ text/x-lisp=emacsclient.desktop
 text/x-shellscript=emacsclient.desktop
 video/mp4=mympv.desktop
 video/x-matroska=mympv.desktop
+video/webm=mympv.desktop
 audio/mpeg=mympv.desktop
 x-scheme-handler/about=brave.desktop
 x-scheme-handler/unknown=brave.desktop
