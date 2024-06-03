@@ -68,9 +68,9 @@ super + a ; {s,w,n,x,t,b,p}
      pkill pulseaudio && pulseaudio -D && notify-send 'restarted pulseaudio'}
 
 super + s; {l,h,s}
-      {echo playlist-next | socat - "/tmp/mpv_socket",\
-       echo playlist-prev | socat - "/tmp/mpv_socket",\
-       echo cycle pause | socat - "/tmp/mpv_socket"}
+      {echo playlist-next | socat - ~/data/mpv_data/sockets/mpv.socket,\
+       echo playlist-prev | socat - ~/data/mpv_data/sockets/mpv.socket,\
+       echo cycle pause | socat - ~/data/mpv_data/sockets/mpv.socket}
 
 super + s; {w, W, q, f, a}
     {mpv_lyrics.sh,\
