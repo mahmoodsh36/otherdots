@@ -101,3 +101,6 @@ super + v; {n,1,2}
 super + b; {f,h}
     {notify-send 'connecting to freebuds'; terminal_with_cmd.sh 'bluetoothctl power on; bluetoothctl connect A0:DE:0F:CA:59:42',\
     terminal_with_cmd.sh 'bluetoothctl power on; bluetoothctl connect 94:DB:56:A3:F1:54'}
+
+super + alt + {j,k}
+    control_volume.sh {-,+}3%
