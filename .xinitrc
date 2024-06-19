@@ -22,3 +22,5 @@ sxhkd &
 # touchegg & # run touchegg for touch gestures
 
 exec awesome
+# exec plasma
+# exec starplasma-x11
