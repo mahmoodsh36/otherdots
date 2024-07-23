@@ -15,7 +15,8 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 
 # vim keys
-bindkey -v
+ bindkey -v
+# bindkey -e
 
 # bindings
 #bindkey '^P' up-history
