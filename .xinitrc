@@ -7,20 +7,28 @@ fi
 # parcellite unbinds C-M-x from emacs :(
 #parcellite &
 
-hsetroot -solid '#222222'
-unclutter -root &
+# hsetroot -solid '#222222'
+# unclutter -root &
 #blueman-applet &
-mpris-proxy &
+# mpris-proxy &
 #syndaemon -K -i 0.5 -R -d &
 
 xrdb -load ~/.Xresources &
 
 # disable beep sound
-sudo rmmod pcspkr &
+# sudo rmmod pcspkr &
 sxhkd &
 
-# touchegg & # run touchegg for touch gestures
+touchegg & # run touchegg for touch gestures
+#
+while true; do
+    setxkbmap -option caps:escape
+    setxkbmap -option ctrl:ralt_rctrl
+    sleep 5;
+done&
 
 exec awesome
 # exec plasma
 # exec starplasma-x11
+# exec xfce4-session
+# exec startxfce4
