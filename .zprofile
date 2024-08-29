@@ -7,3 +7,6 @@ export QT_SCALE_FACTOR=2
 
 # for pipx packages and scripts etc
 export PATH="$HOME/.local/bin/:$PATH"
+
+# some env vars
+source ~/work/arch/env.sh
