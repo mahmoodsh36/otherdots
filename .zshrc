@@ -148,15 +148,6 @@ load_plugins() {
 }
 load_plugins 2>/dev/null
 
-setup_yay() {
-    sudo pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si
-    cd ..
-    rm -rf yay
-}
-
 # ssh issues with kitty fix
 export TERM=xterm-256color
 export EDITOR=nvim
