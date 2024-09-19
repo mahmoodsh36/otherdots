@@ -1,5 +1,5 @@
 super + Return
-    kitty
+    $TERMINAL || wezterm
 
 super + x ; {e,w,s,j,k,f,p}
     {notify-send "launched emacs" && emacs, \
