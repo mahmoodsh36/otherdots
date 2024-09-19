@@ -7,7 +7,7 @@ Sxiv.font: Fantasque sans mono:size=13
 
 ! Xft.dpi: 168
 ! rofi.dpi: 168
-*.dpi: 168
+# *.dpi: 126
 Xcursor.size: 32
 
 ! These might also be useful depending on your monitor and personal preference:
