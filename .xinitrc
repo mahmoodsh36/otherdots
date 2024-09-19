@@ -27,8 +27,10 @@ while true; do
     sleep 5;
 done&
 
-exec awesome
+# exec awesome
 # exec plasma
 # exec starplasma-x11
-# exec xfce4-session
+exec xfce4-session
 # exec startxfce4
+# export DESKTOP_SESSION=plasma
+# exec startplasma-x11
