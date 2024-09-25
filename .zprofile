@@ -9,4 +9,4 @@ export GUILE_LOAD_PATH="$HOME/workspace/guix/"
 export PATH="$HOME/.local/bin/:$PATH"
 
 # some env vars
-source ~/work/arch/env.sh
+# source ~/work/arch/env.sh
