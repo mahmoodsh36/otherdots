@@ -31,6 +31,6 @@ done&
 # exec plasma
 # exec starplasma-x11
 exec xfce4-session
-# exec startxfce4
-# export DESKTOP_SESSION=plasma
+exec startxfce4
+# port DESKTOP_SESSION=plasma
 # exec startplasma-x11
