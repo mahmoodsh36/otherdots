@@ -48,9 +48,8 @@
            :onchange onchange)))
 
 
-
-(deflisten music :interval "1s"
-  "~/work/scripts/current_mpv_track.sh || true")
+(defpoll music :interval "1s"
+ "~/work/scripts/current_mpv_track.sh || true")
 
 (defpoll volume :interval "1s"
   "~/work/scripts/control_volume.sh")
