@@ -12,7 +12,8 @@ do
             notify-send "$PWD/$file"
             ;;
         "w")
-            feh --bg-fill "$file"
+            # feh --bg-fill "$file"
+            swww-daemon & disown; swww img "$file"
             cp "$file" ~/.cache/wallpaper
             ;;
         "r")
