@@ -108,7 +108,8 @@ local config = {
 	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	cursor_blink_rate = 0,
-	--enable_wayland = enable_wayland(),
+	enable_wayland = false,
+  front_end = "WebGpu",
 	-- https://github.com/wez/wezterm/issues/1772
 	-- enable_wayland = true,
 	color_scheme = "nordfox",
@@ -153,7 +154,7 @@ local config = {
 	mouse_bindings = keybinds.mouse_bindings,
 	-- https://github.com/wez/wezterm/issues/2756
 	webgpu_preferred_adapter = gpus[1],
-	front_end = "OpenGL",
+	-- front_end = "OpenGL",
   audible_bell = "Disabled",
   -- increase scrollback buffer size
   scrollback_lines = 1000000
