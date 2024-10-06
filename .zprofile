@@ -10,3 +10,6 @@ export PATH="$HOME/.local/bin/:$PATH"
 
 # some env vars
 # source ~/work/arch/env.sh
+
+# some env vars
+[ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
