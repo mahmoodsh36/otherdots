@@ -108,7 +108,7 @@ local config = {
 	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	cursor_blink_rate = 0,
-	enable_wayland = false,
+	enable_wayland = true,
   front_end = "WebGpu",
 	-- https://github.com/wez/wezterm/issues/1772
 	-- enable_wayland = true,
