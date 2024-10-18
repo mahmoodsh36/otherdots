@@ -1,2 +1,0 @@
-
-initially copied from https://github.com/husseinhareb/hyprland-eww
