@@ -54,8 +54,8 @@
 		(button :class "reddit" :style "background-image: url('images/icons/websites/reddit.png');" :onclick "firefox www.reddit.com")))
 ;;telegram
 (defwidget telegram []
-	(box :class "wid_get_2" :vexpand "false" :hexpand "false"
-		(button :class "telegram" :style "background-image: url('images/icons/websites/telegram.png');"  :onclick "firefox https://web.telegram.org/")))
+        (box :class "wid_get_2" :vexpand "false" :hexpand "false"
+                (button :class "emacs" :style "background-image: url('/home/mahmooz/work/otherdots/.config/eww/topbar/images/icons/apps/emacs.png');"  :onclick "emacs")))
 
 ;; time
 (defwidget time []
@@ -164,8 +164,6 @@
                                                 (circular-progress :class "res_mem" :value MEM_USAGE :thickness 5
                                                         (label :class "res_circle_small" :text "MEMORY")))
                                         (label :class "res_text" :valign "end" :halign "center" :text "${MEM_USAGE}%"))))
-
-
 
 ;; ** Windows *************************************************************************
 
@@ -366,7 +364,6 @@
            :windowtype "dock"
            :wm-ignore false
 (system))
-
 
 ;; resources
 (defwindow resources
