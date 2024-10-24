@@ -102,7 +102,7 @@ alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
 alias cp="rsync -a --times --info=progress2"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
-alias ytdl='yt-dlp'
+alias ytdl='yt-dlp --cookies-from-browser firefox --trim-filenames 80'
 alias nrs="sudo nixos-rebuild switch"
 alias ncu="sudo nix-channel --update"
 alias tra="transmission-remote"
