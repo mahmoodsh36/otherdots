@@ -4,8 +4,8 @@ while read file
 do
     case "$1" in
         "y")
-            echo $file | tr -d "\n" | xclip -selection c
-            notify-send "$file"
+            echo "$PWD/$file" | tr -d "\n" | xclip -selection c
+            notify-send "$PWD/$file"
             ;;
         "Y")
             echo $PWD/$file | tr -d "\n" | xclip -selection c
