@@ -166,3 +166,6 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 #    zle .accept-line
 #}
 #zle -N accept-line _-accept-line
+
+# some env vars
+[ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
