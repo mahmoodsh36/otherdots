@@ -20,3 +20,6 @@ ln -sf "$HOME/work/otherdots/.config/transmission-daemon/settings.json" "$HOME/.
 mkdir "$HOME/.config/guix/"
 ln -sf "$HOME/work/otherdots/channels.scm" "$HOME/.config/guix/"
 sudo ln -sf "$HOME/work/otherdots/config.scm" "/etc/config.scm"
+
+mkdir ~/.ssh/
+ln -sf "$HOME/work/otherdots/.ssh/authorized_keys" "$HOME/.ssh/"
