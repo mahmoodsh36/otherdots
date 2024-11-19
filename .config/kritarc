@@ -41,9 +41,9 @@ Krita/Ocio/OcioConfigPath=
 Krita/Ocio/OcioLockColorVisualRepresentation=false
 Krita/Ocio/OcioLutPath=
 Krita/Ocio/UseOcio=false
-LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="0" b="0" g="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastBackGroundColor>\n
+LastBackGroundColor=<!DOCTYPE LastBackGroundColor>\n<LastBackGroundColor>\n <RGB r="0" b="0" space="sRGB-elle-V2-srgbtrc.icc" g="0"/>\n</LastBackGroundColor>\n
 LastEraser_0=a) Eraser Circle
-LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0" b="0" g="0" space="sRGB-elle-V2-srgbtrc.icc"/>\n</LastForeGroundColor>\n
+LastForeGroundColor=<!DOCTYPE LastForeGroundColor>\n<LastForeGroundColor>\n <RGB r="0" b="0" space="sRGB-elle-V2-srgbtrc.icc" g="0"/>\n</LastForeGroundColor>\n
 LastPreset=b) Basic-5 Size
 LastPreset_-1=b) Basic-5 Size
 LineSmoothingDelayDistance=50
@@ -154,7 +154,7 @@ logviewer_enabled=false
 maxAllowedSpeedValue=30
 maxSwapSize=4096
 maximumBrushSize=1000
-mdiBackgroundColorXML=<!DOCTYPE color>\n<color channeldepth="U8">\n <RGB r="0.301960796117783" b="0.301960796117783" g="0.301960796117783" space="sRGB-elle-V2-srgbtrc.icc"/>\n</color>\n
+mdiBackgroundColorXML=<!DOCTYPE color>\n<color channeldepth="U8">\n <RGB r="0.301960796117783" b="0.301960796117783" space="sRGB-elle-V2-srgbtrc.icc" g="0.301960796117783"/>\n</color>\n
 mdiBackgroundImage=
 mdi_rubberband=1
 mdi_viewmode=1
@@ -300,74 +300,74 @@ ko_geometry=AdnQywADAAAAAAAFAAAAKQAAAsoAAAN+AAAABQAAACkAAALKAAADfgAAAAAAAAAABaAA
 [MainWindow][DockWidget AnimationCurvesDocker]
 DockArea=2
 Locked=false
-height=448
-width=1274
+height=480
+width=640
 xPosition=0
-yPosition=32
+yPosition=0
 
 [MainWindow][DockWidget ArrangeDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=264
+width=222
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget ArtisticColorSelector]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=284
+width=334
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget ChannelDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=30
+width=100
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget ColorSelectorNg]
 DockArea=2
 Locked=false
-height=752
-width=331
+height=464
+width=640
 xPosition=0
 yPosition=16
 
 [MainWindow][DockWidget CompositionDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=300
+width=400
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget DigitalMixer]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=30
+width=100
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget GamutMask]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=322
+width=363
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget GridDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=527
+width=258
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget HistogramDocker]
 DockArea=2
@@ -396,50 +396,50 @@ yPosition=16
 [MainWindow][DockWidget LogDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=260
+width=400
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget LutDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=328
+width=357
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget OnionSkinsDocker]
 DockArea=8
 Locked=false
-height=351
-width=571
+height=282
+width=336
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget OverviewDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=102
+width=100
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget PaletteDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=422
+width=340
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget PatternDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=235
+width=139
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget PresetDocker]
 DockArea=2
@@ -452,18 +452,18 @@ yPosition=16
 [MainWindow][DockWidget PresetHistory]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=30
+width=100
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget RecorderDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=369
+width=277
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget SmallColorSelector]
 DockArea=2
@@ -476,26 +476,26 @@ yPosition=16
 [MainWindow][DockWidget Snapshot]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=30
+width=100
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget SpecificColorSelector]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=207
+width=268
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget StoryboardDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=561
+width=604
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget SvgSymbolCollectionDocker]
 DockArea=2
@@ -508,18 +508,18 @@ yPosition=16
 [MainWindow][DockWidget TasksetDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=300
+width=400
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget TimelineDocker]
 DockArea=8
 Locked=false
-height=448
-width=875
+height=50
+width=100
 xPosition=0
-yPosition=32
+yPosition=0
 
 [MainWindow][DockWidget ToolBox]
 DockArea=1
@@ -532,18 +532,18 @@ yPosition=16
 [MainWindow][DockWidget TouchDocker]
 DockArea=2
 Locked=false
-height=464
-width=640
+height=341
+width=116
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget WideGamutColorSelector]
 DockArea=2
 Locked=false
-height=464
+height=480
 width=640
 xPosition=0
-yPosition=16
+yPosition=0
 
 [MainWindow][DockWidget comics_project_manager_docker]
 DockArea=2
