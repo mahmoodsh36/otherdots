@@ -167,5 +167,19 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 #}
 #zle -N accept-line _-accept-line
 
+alias mount_computer='out=$(find_computers.py print_ips | head -1); port=$(echo $out | cut -d ":" -f2); ip=$(echo $out | cut -d ":" -f1); sshfs -o ssh_command="ssh -i ~/brain/keys/hetzner1 -p $port" $ip:/home/mahmooz/ ~/secondhome'
+alias sync_brain='out=$(find_computers.py print_ips | head -1); port=$(echo $out | cut -d ":" -f2); ip=$(echo $out | cut -d ":" -f1); cp --delete ~/brain $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port"'
+
+sync_dir() {
+  if [ -z "$1" ]; then
+    echo provide a dir to sync
+  fi
+  echo syncing ~/$1
+  out=$(find_computers.py print_ips | head -1);
+  port=$(echo $out | cut -d ":" -f2);
+  ip=$(echo $out | cut -d ":" -f1);
+  cp --delete ~/$1 $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port"
+}
+
 # some env vars
 [ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
