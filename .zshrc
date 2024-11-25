@@ -178,7 +178,7 @@ sync_dir() {
   out=$(find_computers.py print_ips | head -1);
   port=$(echo $out | cut -d ":" -f2);
   ip=$(echo $out | cut -d ":" -f1);
-  cp --delete ~/$1 $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port"
+  cp --delete ~/$1 $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port" --exclude 'nixos' # exclude nixos to not override per-machine settings
 }
 
 # some env vars
