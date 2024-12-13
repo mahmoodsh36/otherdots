@@ -168,7 +168,7 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 #zle -N accept-line _-accept-line
 
 alias mount_computer='out=$(find_computers.py print_ips | head -1); port=$(echo $out | cut -d ":" -f2); ip=$(echo $out | cut -d ":" -f1); sshfs -o ssh_command="ssh -i ~/brain/keys/hetzner1 -p $port" $ip:/home/mahmooz/ ~/secondhome'
-alias sync_brain='out=$(find_computers.py print_ips | head -1); port=$(echo $out | cut -d ":" -f2); ip=$(echo $out | cut -d ":" -f1); cp --delete ~/brain $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port"'
+alias sync_brain='out=$(find_computers.py print_ips | head -1); port=$(echo $out | cut -d ":" -f2); ip=$(echo $out | cut -d ":" -f1); [ $ip = $port ] && port=22; cp --delete ~/brain $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port"'
 
 sync_dir() {
   if [ -z "$1" ]; then
@@ -178,6 +178,7 @@ sync_dir() {
   out=$(find_computers.py print_ips | head -1);
   port=$(echo $out | cut -d ":" -f2);
   ip=$(echo $out | cut -d ":" -f1);
+  [ $ip = $port ] && port=22
   cp --delete ~/$1 $ip:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1 -p $port" --exclude 'nixos' # exclude nixos to not override per-machine settings
 }
 
