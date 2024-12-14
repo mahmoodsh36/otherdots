@@ -7,7 +7,7 @@
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/mahmooz/brain/pen"/>
-  <property name="lastOpenPath" value=""/>
+  <property name="lastOpenPath" value="/home/mahmooz/brain/notes/data/b9/8328ab-a499-4129-8f2e-2028f7ab52dc"/>
   <property name="lastImagePath" value=""/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
@@ -28,7 +28,7 @@
   <property name="numColumns" value="1"/>
   <property name="numRows" value="1"/>
   <property name="viewFixedRows" value="false"/>
-  <property name="showPairedPages" value="true"/>
+  <property name="showPairedPages" value="false"/>
   <property name="layoutVertical" value="false"/>
   <property name="layoutRightToLeft" value="false"/>
   <property name="layoutBottomToTop" value="false"/>
@@ -49,7 +49,7 @@
   <!--The icon theme, allowed values are "iconsColor", "iconsLucide"-->
   <property name="iconTheme" value="iconsColor"/>
   <!--Dark/light mode, allowed values are "useSystem", "forceLight", "forceDark"-->
-  <property name="themeVariant" value="useSystem"/>
+  <property name="themeVariant" value="forceDark"/>
   <property name="highlightPosition" value="false"/>
   <property name="cursorHighlightColor" value="2164260608"/>
   <property name="cursorHighlightBorderColor" value="2147483903"/>
@@ -111,7 +111,7 @@
   <property name="snapRecognizedShapesEnabled" value="false"/>
   <property name="restoreLineWidthEnabled" value="false"/>
   <property name="numIgnoredStylusEvents" value="0"/>
-  <property name="inputSystemTPCButton" value="true"/>
+  <property name="inputSystemTPCButton" value="false"/>
   <property name="inputSystemDrawOutsideWindow" value="true"/>
   <property name="preferredLocale" value=""/>
   <property name="stabilizerAveragingMethod" value="2"/>
@@ -122,7 +122,7 @@
   <property name="stabilizerDrag" value="0.4"/>
   <property name="stabilizerMass" value="5"/>
   <property name="stabilizerCuspDetection" value="true"/>
-  <property name="stabilizerFinalizeStroke" value="true"/>
+  <property name="stabilizerFinalizeStroke" value="false"/>
   <property name="latexSettings.autoCheckDependencies" value="true"/>
   <property name="latexSettings.defaultText" value="x^2"/>
   <property name="latexSettings.globalTemplatePath" value="/nix/store/sg4sh111gz8yxmbdwdkmhc26hq6gfylr-xournalpp-1.2.4/share/xournalpp/resources/default_template.tex"/>
@@ -215,6 +215,7 @@
       <attribute name="deviceSource" type="int" value="5"/>
     </data>
   </data>
+  <data name="lastUsedPageBgColor"/>
   <data name="tools">
     <attribute name="current" type="string" value="pen"/>
     <data name="drawArrow">
@@ -244,7 +245,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="highlighter">
-      <attribute name="color" type="hex" value="ffffff00"/>
+      <attribute name="color" type="hex" value="ffff00"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
@@ -254,11 +255,11 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="ff0000"/>
+      <attribute name="color" type="hex" value="3333cc"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="THIN"/>
+      <attribute name="size" type="string" value="MEDIUM"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">
