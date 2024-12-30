@@ -82,9 +82,9 @@ local local_config = load_local_config("local")
 ---------------------------------------------------------------
 local config = {
 	-- font = wezterm.font("Cica"),
-	-- font_size = 10.0,
+	font_size = 10.0,
 	--font = wezterm.font("UDEV Gothic 35NFLG"),
-	font_size = 15.5,
+	-- font_size = 15.5,
 	-- cell_width = 1.1,
 	-- line_height = 1.1,
 	-- font_rules = {
@@ -108,10 +108,9 @@ local config = {
 	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	cursor_blink_rate = 0,
-	enable_wayland = true,
-  front_end = "WebGpu",
+        -- front_end = "WebGpu",
 	-- https://github.com/wez/wezterm/issues/1772
-	-- enable_wayland = true,
+	enable_wayland = true,
 	color_scheme = "nordfox",
 	color_scheme_dirs = { os.getenv("HOME") .. "/.config/wezterm/colors/" },
 	hide_tab_bar_if_only_one_tab = false,
