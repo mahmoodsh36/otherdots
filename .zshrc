@@ -184,4 +184,4 @@ sync_dir() {
 
 # some env vars
 [ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
-source ~/work/arch/env.sh
+# source ~/work/arch/env.sh
