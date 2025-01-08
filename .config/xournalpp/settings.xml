@@ -8,7 +8,7 @@
   <property name="selectedToolbar" value="Portrait"/>
   <property name="lastSavePath" value="/home/mahmooz/brain/pen"/>
   <property name="lastOpenPath" value="/home/mahmooz/brain/notes/data/b9/8328ab-a499-4129-8f2e-2028f7ab52dc"/>
-  <property name="lastImagePath" value=""/>
+  <property name="lastImagePath" value="/home/mahmooz"/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
   <property name="zoomStep" value="10"/>
@@ -92,7 +92,7 @@
   <property name="preloadPagesAfter" value="5"/>
   <property name="eagerPageCleanup" value="true"/>
   <!--Config for new pages-->
-  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=lined&#10;backgroundColor=#ffffff&#10;"/>
+  <property name="pageTemplate" value="xoj/template&#10;copyLastPageSettings=true&#10;size=595.275591x841.889764&#10;backgroundType=graph&#10;backgroundColor=#ffffff&#10;"/>
   <property name="sizeUnit" value=""/>
   <property name="audioFolder" value=""/>
   <property name="audioInputDevice" value="-1"/>
@@ -238,17 +238,17 @@
     </data>
     <data name="eraser">
       <attribute name="drawingType" type="string" value="default"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="THIN"/>
       <attribute name="type" type="string" value="deleteStroke"/>
     </data>
     <data name="hand">
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="highlighter">
-      <attribute name="color" type="hex" value="ffff00"/>
+      <attribute name="color" type="hex" value="3333cc"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
-      <attribute name="fillAlpha" type="int" value="128"/>
+      <attribute name="fillAlpha" type="int" value="255"/>
       <attribute name="size" type="string" value="MEDIUM"/>
     </data>
     <data name="image">
@@ -258,8 +258,8 @@
       <attribute name="color" type="hex" value="3333cc"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
-      <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="fillAlpha" type="int" value="255"/>
+      <attribute name="size" type="string" value="BIG"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">
