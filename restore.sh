@@ -23,3 +23,4 @@ sudo ln -sf "$HOME/work/otherdots/config.scm" "/etc/config.scm"
 
 mkdir ~/.ssh/
 ln -sf "$HOME/work/otherdots/.ssh/authorized_keys" "$HOME/.ssh/"
+ln -sf "$HOME/work/otherdots/.ssh/config" "$HOME/.ssh/"
