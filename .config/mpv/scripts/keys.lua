@@ -16,7 +16,7 @@ function remove_video()
 end
 function yank_path_to_clipboard()
     vid_path = mp.get_property("path")
-    os.execute('echo "' .. vid_path:gsub('"', '\\"') .. '" | xclip -selection clipboard')
+    os.execute('echo "' .. vid_path:gsub('"', '\\"') .. '" | wl-copy')
     os.execute('notify-send "' .. vid_path:gsub('"', '\\"') .. '"')
 end
 --mp.add_key_binding("d", "download_video", video_downloader)
