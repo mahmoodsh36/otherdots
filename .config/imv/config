@@ -5,7 +5,7 @@ suppress_default_binds = true
 
 [binds]
 q = quit
-y = exec echo $imv_current_file | wl-copy
+y = exec echo -n $imv_current_file | wl-copy
 p = prev
 n = next
 g = goto 1
