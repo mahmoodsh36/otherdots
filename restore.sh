@@ -2,14 +2,14 @@
 
 ln -sf "$HOME/work/otherdots/.gitconfig" "$HOME/"
 
-for filename in .xinitrc .zshrc .zprofile .Xresources .tmux.conf .pythonrc; do
-	ln -sf "$HOME/work/otherdots/$filename" "$HOME/"
+for filename in .xinitrc .zshrc .zprofile .Xresources .tmux.conf .pythonrc .lem; do
+    ln -sf "$HOME/work/otherdots/$filename" "$HOME/"
 done
 
 mkdir "$HOME/.config/"
 for filename in alacritty compton.conf mimeapps.list mpv vifm qutebrowser kitty\
-	rofi sxhkd sxiv user-dirs.dirs zathura nushell wezterm xournalpp hypr imv; do
-	ln -sf "$HOME/work/otherdots/.config/$filename" "$HOME/.config/"
+	                  rofi sxhkd sxiv user-dirs.dirs zathura nushell wezterm xournalpp hypr imv; do
+    ln -sf "$HOME/work/otherdots/.config/$filename" "$HOME/.config/"
 done
 
 mkdir ~/.config/transmission-daemon
