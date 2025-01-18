@@ -64,8 +64,8 @@ else
 fi
 
 # aliases
-alias l="ls"
-alias ls="ls --color"
+alias l="exa"
+alias ls="exa"
 alias grep="grep --color=auto"
 alias o="xdg-open"
 alias vim="nvim"
@@ -114,7 +114,7 @@ alias dla="yt-dlp -f bestaudio --extract-audio --add-metadata --split-chapters -
 
 # cd and ls into directory
 c() {
-    cd $@; ls
+    cd $@; exa
 }
 
 # do some math
