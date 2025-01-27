@@ -64,8 +64,9 @@ else
 fi
 
 # aliases
-alias l="exa"
-alias ls="exa"
+# exa is slow tho..
+alias l="ls"
+# alias ls="ls"
 alias grep="grep --color=auto"
 alias o="xdg-open"
 alias vim="nvim"
@@ -103,7 +104,7 @@ alias mt="file --mime-type -b"
 alias cp="rsync -a --times --info=progress2"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1'"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
-alias ytdl='yt-dlp --cookies-from-browser firefox --trim-filenames 80'
+alias ytdl='yt-dlp --trim-filenames 80'
 alias nrs="sudo nixos-rebuild switch"
 alias ncu="sudo nix-channel --update"
 alias tra="transmission-remote"
@@ -114,7 +115,7 @@ alias dla="yt-dlp -f bestaudio --extract-audio --add-metadata --split-chapters -
 
 # cd and ls into directory
 c() {
-    cd $@; exa
+    cd $@; ls
 }
 
 # do some math
