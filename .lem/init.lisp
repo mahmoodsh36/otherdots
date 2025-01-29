@@ -26,5 +26,25 @@
 (define-key *frame-keymap* "r" 'frame-mulitplexer-rename)
 (define-key *global-keymap* "C-z" *frame-keymap*)
 
+;; relative line numbers
 (lem/line-numbers:toggle-line-numbers)
 (setf lem/line-numbers:*relative-line* t)
+
+(define-key lem-vi-mode:*normal-keymap*
+  "Space Space"
+  'execute-command)
+
+(defun led-key (key command)
+  (define-key lem-vi-mode:*normal-keymap*
+              (concatenate 'string "Space " key)
+              command))
+
+;; show completions in minibuffer instantly
+(add-hook *prompt-after-activate-hook*
+          (lambda ()
+            (call-command 'lem/prompt-window::prompt-completion nil)))
+(add-hook *prompt-deactivate-hook*
+          (lambda ()
+            (lem/completion-mode:completion-end)))
+
+(led-key "f f" 'find-file)
