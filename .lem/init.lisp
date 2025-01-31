@@ -77,6 +77,17 @@
 
 ;; keys to find files
 (led-key "f f" 'find-file)
-(led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp")))
+(define-command find-config () ()
+  (find-file "/home/mahmooz/.lem/init.lisp"))
+(led-key "e" 'find-config)
+;; (led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp"))) ;; how do we get lambdas to work? is there a builtin macro or should we write our own
 
 (led-key "x" 'lem-lisp-mode/eval::lisp-eval-defun)
+
+;; buffer-related keys
+(led-key "b s" 'select-buffer)
+(define-command my-kill-current-buffer () ()
+  (kill-buffer (current-buffer)))
+(led-key "b k" 'my-kill-current-buffer)
+
+(led-key "g d" 'find-definitions)
