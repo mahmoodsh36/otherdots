@@ -101,7 +101,7 @@ alias calc="bc -l"
 alias bde="bg; disown; exit"
 alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
-alias cp="rsync -a --times --info=progress2"
+alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1'"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
 alias ytdl='yt-dlp --trim-filenames 80'
