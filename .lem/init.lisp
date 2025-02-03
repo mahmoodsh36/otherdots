@@ -1,6 +1,6 @@
 (in-package :lem-user)
 
-;; Start in vi-mode
+;; start in vi-mode
 (lem-vi-mode:vi-mode)
 
 (setf lem-core::*default-prompt-gravity* :bottom-display)
@@ -14,7 +14,8 @@
 (define-keys *help-keymap*
   ("b" 'describe-bindings)
   ("k" 'describe-key)
-  ("a" 'lem-lisp-mode:lisp-apropos)
+  ("A" 'lem-lisp-mode:lisp-apropos)
+  ("a" 'lem-lisp-mode/internal::lisp-search-symbol)
   ("c" 'apropos-command)
   ("p" 'lem-lisp-mode:lisp-apropos-package)
   ("f" 'lem-lisp-mode:lisp-describe-symbol))
@@ -37,6 +38,7 @@
   ("j" 'lem-vi-mode/binds::vi-window-move-down)
   ("k" 'lem-vi-mode/binds::vi-window-move-up)
   ("s" 'lem-vi-mode/binds::vi-window-split-vertically)
+  ("v" 'lem-vi-mode/binds::vi-window-split-horizontally)
   ("c" 'lem-vi-mode/binds::vi-close)
   ("o" 'lem-vi-mode/binds::delete-other-windows)
   )
@@ -75,13 +77,6 @@
           (lambda ()
             (lem/completion-mode:completion-end)))
 
-;; keys to find files
-(led-key "f f" 'find-file)
-(define-command find-config () ()
-  (find-file "/home/mahmooz/.lem/init.lisp"))
-(led-key "e" 'find-config)
-;; (led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp"))) ;; how do we get lambdas to work? is there a builtin macro or should we write our own
-
 (led-key "x" 'lem-lisp-mode/eval::lisp-eval-defun)
 
 ;; buffer-related keys
@@ -91,3 +86,39 @@
 (led-key "b k" 'my-kill-current-buffer)
 
 (led-key "g d" 'find-definitions)
+
+;; update completion after backspace
+(define-command completion-backspace () ()
+  (ignore-errors
+    (delete-previous-char)
+    (ignore-errors
+      (lem/completion-mode::continue-completion
+       lem/completion-mode::*completion-context*))))
+(define-keys lem/completion-mode::*completion-mode-keymap*
+  ("Backspace" 'completion-backspace))
+
+(define-command fp-find-file () ()
+  "find-file with backspace bound to up-directory."
+  (let ((keys (make-keymap)))
+    (define-key keys "Backspace" 'fp-up-directory)
+    (with-special-keymap ( keys)
+      (call-command 'find-file (universal-argument-of-this-command)))))
+(define-command fp-up-directory () ()
+  "Delete the last path segment in file prompt."
+  (alexandria:when-let*
+      ((pwindow (lem/prompt-window::current-prompt-window))
+       (wstring (and pwindow (lem/prompt-window::get-input-string))))
+    (lem/prompt-window::replace-prompt-input
+     (ignore-errors
+       (let* ((trimmed (str:trim-right wstring :char-bag '(#\/ )))
+              (endp (1+ (position #\/ trimmed :from-end t :test #'char-equal))))
+         (subseq trimmed 0 endp))))
+    (lem/completion-mode::completion-end)
+    (ignore-errors (lem/prompt-window::prompt-completion))))
+
+;; keys to find files
+(led-key "f f" 'fp-find-file)
+(define-command find-config () ()
+  (find-file "/home/mahmooz/.lem/init.lisp"))
+(led-key "e" 'find-config)
+;; (led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp"))) ;; how do we get lambdas to work? is there a builtin macro or should we write our own
