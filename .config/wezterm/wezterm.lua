@@ -23,6 +23,8 @@ config.unix_domains = {
   },
 }
 
+config.check_for_updates = false
+
 config.keys = {
   {key="1", mods="ALT", action=wezterm.action{ActivateTab=0}},
   {key="2", mods="ALT", action=wezterm.action{ActivateTab=1}},
