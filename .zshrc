@@ -53,8 +53,16 @@ setopt INC_APPEND_HISTORY_TIME
 setopt interactivecomments
 setopt EXTENDED_HISTORY # save <beginning time>:<elapsed seconds>;<command>
 
+if ; then
+    echo "Running over WezTerm SSH"
+elif ps -o comm= -p $PPID | grep -q 'sshd'; then
+    echo "Running over OpenSSH"
+else
+    echo "Not an SSH session"
+fi
+
 # prompt
-if [ -n "$SSH_CLIENT" ]; then
+if [ -n "$SSH_CLIENT" ] || ps -o comm= -p $PPID | grep -q 'wezterm-mux-ser'; then
   ip_addr=$(ip addr | grep 'inet\s' | grep -v '127.0.0.1' | tr -s ' ' | cut -d ' ' -f3 | cut -d'/' -f1 | head -1)
   export PS1="$ip_addr %1~ λ "
 elif [[ ! -z "$IN_NIX_SHELL" ]]; then
