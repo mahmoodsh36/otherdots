@@ -1,4 +1,4 @@
-# [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return # this breaks emacs M-x shell
+[[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return # this breaks emacs M-x shell
 # disabled vi mode in zsh for now, i use emacs vterm
 # cursor handling for vi-mode
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -112,7 +112,7 @@ alias mt="file --mime-type -b"
 alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1'"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
-alias ytdl='yt-dlp --trim-filenames 80'
+alias ytdl='yt-dlp --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
 alias nrs="sudo nixos-rebuild switch"
 alias ncu="sudo nix-channel --update"
 alias tra="transmission-remote"

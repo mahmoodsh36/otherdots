@@ -1,3 +1,7 @@
+(defpackage :lem-user
+  ;; (:use :cl :lem :lem-elisp-mode :lem-sdl2 :lem/buffer/internal :lem-sdl2/graphics)
+  (:use :cl :lem :lem-elisp-mode :lem/buffer/internal)
+  )
 (in-package :lem-user)
 
 ;; start in vi-mode
@@ -60,6 +64,9 @@
 (define-key lem-vi-mode:*normal-keymap*
   "Space h"
   *help-keymap*)
+(define-key lem-vi-mode:*insert-keymap*
+  "C-h"
+  *help-keymap*)
 (define-key lem-vi-mode:*normal-keymap*
   "Space w"
   *window-keymap*)
@@ -83,9 +90,13 @@
 (led-key "b s" 'select-buffer)
 (define-command my-kill-current-buffer () ()
   (kill-buffer (current-buffer)))
+(define-command my-kill-current-buffer-and-window () ()
+  (kill-buffer (current-buffer))
+  (lem-core/commands/window:delete-active-window))
 (led-key "b k" 'my-kill-current-buffer)
+(led-key "b K" 'my-kill-current-buffer-and-window)
 
-(led-key "g d" 'find-definitions)
+(define-key lem-vi-mode:*normal-keymap* "g d" 'lem/language-mode::find-definitions)
 
 ;; update completion after backspace
 (define-command completion-backspace () ()
@@ -122,3 +133,68 @@
   (find-file "/home/mahmooz/.lem/init.lisp"))
 (led-key "e" 'find-config)
 ;; (led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp"))) ;; how do we get lambdas to work? is there a builtin macro or should we write our own
+
+;; (load "/home/mahmooz/.lem/my-buffer")
+;; (load "/home/mahmooz/.lem/organ-mode")
+
+;; (define-key *completion-mode-keymap* 'next-line 'completion-next-line)
+;; (undefine-key *paredit-mode-keymap* "C-k")
+
+(define-command python-eval-region (start end) (:region)
+  (unless (alive-process-p)
+    (editor-error "Python process doesn't exist."))
+  (lem-process:process-send-input *process* (points-to-string start end)))
+
+;; (defun test50 ()
+;;   (let ((image (sdl2-image:load-image "/home/mahmooz/dl/icon-for-lem.png")))
+;;     (insert-string
+;;      (buffer-point (current-buffer))
+;;      "test"
+;;      :attribute (lem:make-attribute :plist (list :image image)))
+;;     (map () #'lem:stop-timer lem/common/timer::*idle-timer-list*)
+;;     ))
+
+;; (define-command lisp-describe-symbol () ()
+;;   (check-connection)
+;;   (let ((symbol-name
+;;           (prompt-for-symbol-name "Describe symbol: "
+;;                                   (or (symbol-string-at-point (current-point)) ""))))
+;;     (describe-symbol symbol-name)))
+
+;; (define-command listener-return-1 () ()
+;;   (if (point< (current-point)
+;;               (input-start-point (current-buffer)))
+;;       (insert-character (current-point) #\newline)
+;;       (with-point ((point (buffer-end (current-point)) :left-inserting))
+;;             (let ((start (input-start-point (current-buffer))))
+;;               (unless (point<= start point)
+;;                 (refresh-prompt)
+;;                 ;; (return-from listener-return)
+;;                 )
+;;               (let ((str (points-to-string start point)))
+;;                 (lem/common/history:add-history (current-listener-history) str)
+;;                 (buffer-end point)
+;;                 (insert-character point #\newline)
+;;                 (change-input-start-point (current-point))
+;;                 (funcall (variable-value 'listener-execute-function) point str))))))
+;; (undefine-key lem/prompt-window::*prompt-mode-keymap* "Return")
+;; (undefine-key lem/listener-mode::*listener-mode-keymap* "Return")
+;; (define-key lem/listener-mode::*listener-mode-keymap* "Return" 'listener-return-1)
+;; (define-key lem/prompt-window::*prompt-mode-keymap* "Return" 'listener-return-1)
+
+(define-command my-find-definition () ()
+  (lem-lisp-mode/internal::check-connection)
+  (let ((symbol-name
+          (lem-lisp-mode/internal::prompt-for-symbol-name "Describe symbol: "
+                                                          (or (lem/buffer/internal::symbol-string-at-point (current-point)) ""))))
+    (format t "looking up ~A~%" symbol-name)
+    (lem-lisp-mode/internal::find-definitions-by-name symbol-name)))
+
+;; (defun find-definitions-default (point)
+;;   (let ((name (or (symbol-string-at-point point)
+;;                   (prompt-for-symbol-name "Edit Definition of: "))))
+;;     (alexandria:when-let (result (find-local-definition point name))
+;;       (return-from find-definitions-default result))
+;;     (find-definitions-by-name name)))
+
+;; (start-lisp-repl)
