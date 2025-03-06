@@ -1,8 +1,15 @@
 (defpackage :lem-user
   ;; (:use :cl :lem :lem-elisp-mode :lem-sdl2 :lem/buffer/internal :lem-sdl2/graphics)
-  (:use :cl :lem :lem-elisp-mode :lem/buffer/internal)
+  (:use :cl :lem :lem-elisp-mode :lem/buffer/internal :lem-core)
   )
 (in-package :lem-user)
+
+;; so we dont have to use `define-command' explicitly
+(defmacro cmd (&body body)
+  (let ((name (gensym "lambda-command-")))
+    `(progn
+       (define-command ,name () () ,@body)
+       ',name))) ;; return the generated command name
 
 ;; start in vi-mode
 (lem-vi-mode:vi-mode)
@@ -59,6 +66,10 @@
 (define-key lem-vi-mode:*normal-keymap*
   "s"
   'save-current-buffer)
+;; r instead of C-r to redo
+(define-key lem-vi-mode:*normal-keymap*
+  "r"
+  'lem-vi-mode/commands:vi-redo)
 ;; spc-h for help keys
 ;; (define-key *global-keymap* "C-z" *frame-keymap*)
 (define-key lem-vi-mode:*normal-keymap*
@@ -105,14 +116,28 @@
     (ignore-errors
       (lem/completion-mode::continue-completion
        lem/completion-mode::*completion-context*))))
+
+;; accept current prompt completion entry without trying to complete
+(define-command prompt-execute-auto-accept () ()
+  (let ((input (lem/prompt-window::get-input-string)))
+    (when (or (null (lem/prompt-window::prompt-window-existing-test-function (lem/prompt-window::current-prompt-window)))
+              (funcall (lem/prompt-window::prompt-window-existing-test-function (lem/prompt-window::current-prompt-window)) input))
+      (lem/common/history:add-history (lem/prompt-window::prompt-window-history (lem/prompt-window::current-prompt-window)) input)
+      (error 'lem/prompt-window::execute-condition :input input))))
+
+(undefine-key lem/completion-mode::*completion-mode-keymap* "Return")
 (define-keys lem/completion-mode::*completion-mode-keymap*
-  ("Backspace" 'completion-backspace))
+  ("Backspace" 'completion-backspace)
+  ("Return" (cmd
+              (lem/completion-mode::completion-select)
+              (when (lem/prompt-window::current-prompt-window)
+                (lem/prompt-window::prompt-execute)))))
 
 (define-command fp-find-file () ()
   "find-file with backspace bound to up-directory."
   (let ((keys (make-keymap)))
     (define-key keys "Backspace" 'fp-up-directory)
-    (with-special-keymap ( keys)
+    (with-special-keymap (keys)
       (call-command 'find-file (universal-argument-of-this-command)))))
 (define-command fp-up-directory () ()
   "Delete the last path segment in file prompt."
@@ -132,55 +157,20 @@
 (define-command find-config () ()
   (find-file "/home/mahmooz/.lem/init.lisp"))
 (led-key "e" 'find-config)
-;; (led-key "e" (lambda () (find-file "/home/mahmooz/.lem/init.lisp"))) ;; how do we get lambdas to work? is there a builtin macro or should we write our own
-
-;; (load "/home/mahmooz/.lem/my-buffer")
-;; (load "/home/mahmooz/.lem/organ-mode")
-
-;; (define-key *completion-mode-keymap* 'next-line 'completion-next-line)
-;; (undefine-key *paredit-mode-keymap* "C-k")
 
 (define-command python-eval-region (start end) (:region)
   (unless (alive-process-p)
     (editor-error "Python process doesn't exist."))
   (lem-process:process-send-input *process* (points-to-string start end)))
 
-;; (defun test50 ()
-;;   (let ((image (sdl2-image:load-image "/home/mahmooz/dl/icon-for-lem.png")))
-;;     (insert-string
-;;      (buffer-point (current-buffer))
-;;      "test"
-;;      :attribute (lem:make-attribute :plist (list :image image)))
-;;     (map () #'lem:stop-timer lem/common/timer::*idle-timer-list*)
-;;     ))
-
-;; (define-command lisp-describe-symbol () ()
-;;   (check-connection)
-;;   (let ((symbol-name
-;;           (prompt-for-symbol-name "Describe symbol: "
-;;                                   (or (symbol-string-at-point (current-point)) ""))))
-;;     (describe-symbol symbol-name)))
-
-;; (define-command listener-return-1 () ()
-;;   (if (point< (current-point)
-;;               (input-start-point (current-buffer)))
-;;       (insert-character (current-point) #\newline)
-;;       (with-point ((point (buffer-end (current-point)) :left-inserting))
-;;             (let ((start (input-start-point (current-buffer))))
-;;               (unless (point<= start point)
-;;                 (refresh-prompt)
-;;                 ;; (return-from listener-return)
-;;                 )
-;;               (let ((str (points-to-string start point)))
-;;                 (lem/common/history:add-history (current-listener-history) str)
-;;                 (buffer-end point)
-;;                 (insert-character point #\newline)
-;;                 (change-input-start-point (current-point))
-;;                 (funcall (variable-value 'listener-execute-function) point str))))))
-;; (undefine-key lem/prompt-window::*prompt-mode-keymap* "Return")
-;; (undefine-key lem/listener-mode::*listener-mode-keymap* "Return")
-;; (define-key lem/listener-mode::*listener-mode-keymap* "Return" 'listener-return-1)
-;; (define-key lem/prompt-window::*prompt-mode-keymap* "Return" 'listener-return-1)
+(defun test50 ()
+  (let ((image (sdl2-image:load-image "/home/mahmooz/dl/icon-for-lem.png")))
+    (insert-string
+     (buffer-point (current-buffer))
+     "test"
+     :attribute (lem:make-attribute :plist (list :image image)))
+    (map () #'lem:stop-timer lem/common/timer::*idle-timer-list*)
+    ))
 
 (define-command my-find-definition () ()
   (lem-lisp-mode/internal::check-connection)
@@ -190,11 +180,7 @@
     (format t "looking up ~A~%" symbol-name)
     (lem-lisp-mode/internal::find-definitions-by-name symbol-name)))
 
-;; (defun find-definitions-default (point)
-;;   (let ((name (or (symbol-string-at-point point)
-;;                   (prompt-for-symbol-name "Edit Definition of: "))))
-;;     (alexandria:when-let (result (find-local-definition point name))
-;;       (return-from find-definitions-default result))
-;;     (find-definitions-by-name name)))
-
-;; (start-lisp-repl)
+(define-command my-menu () ()
+  (prompt-for-string
+   "test"
+   :completion-function (lambda (val) (list "test1" "test2" "test3"))))
