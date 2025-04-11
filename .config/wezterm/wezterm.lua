@@ -16,6 +16,11 @@ config.ssh_domains = {
     remote_address = 'mahmooz2-2',
     username = 'mahmooz',
   },
+  {
+    name = 'mahmooz3',
+    remote_address = 'mahmooz3',
+    username = 'mahmooz',
+  },
 }
 
 config.font = wezterm.font('iosevka')
