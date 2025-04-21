@@ -1,15 +1,9 @@
-GOOSE_PROVIDER: openai
-GOOSE_CLI_MIN_PRIORITY: 0.0
-OPENAI_HOST: http://mahmooz2:5000
-OPENAI_BASE_PATH: v1/chat/completions
 GOOSE_MODEL: final-Qwen--QwQ-32B.gguf
+GOOSE_CLI_MIN_PRIORITY: 0.0
+GOOSE_PROVIDER: openai
+OPENAI_BASE_PATH: v1/chat/completions
+OPENAI_HOST: http://mahmooz2:5000
 extensions:
-  computercontroller:
-    display_name: Computer Controller
-    enabled: true
-    name: computercontroller
-    timeout: 300
-    type: builtin
   developer:
     display_name: Developer Tools
     enabled: true
@@ -25,49 +19,96 @@ extensions:
   mcp-server-sequential-thinking:
     cmd: mcp-server-sequential-thinking
     enabled: true
+    args: []
+    envs: {}
     name: mcp-server-sequential-thinking
-    # type: stdio
-  mcp-server-fetch:
-    cmd: mcp-server-fetch
-    enabled: true
-    name: mcp-server-fetch
-  mcp-server-everything:
-    cmd: mcp-server-everything
-    enabled: true
-    name: mcp-server-everything
-  mcp-server-time:
-    cmd: mcp-server-time
-    enabled: true
-    name: mcp-server-time
-  mcp-server-git:
-    cmd: mcp-server-git
-    enabled: true
-    name: mcp-server-git
-  mcp-server-filesystem:
-    cmd: mcp-server-filesystem
-    enabled: true
-    name: mcp-server-filesystem
-  mcp-server-redis:
-    cmd: mcp-server-redis
-    enabled: true
-    name: mcp-server-redis
-  playwright-mcp:
-    cmd: playwright-mcp
-    enabled: true
-    name: playwright-mcp
-  mcp-server-github github-mcp-server:
-    cmd: mcp-server-github github-mcp-server
-    enabled: true
-    name: mcp-server-github github-mcp-server
-  mcp-server-memory:
-    cmd: mcp-server-memory
-    enabled: true
-    name: mcp-server-memory
-  mcp-server-brave-search:
-    cmd: mcp-server-brave-search
-    enabled: true
-    name: mcp-server-brave-search
+    type: stdio
+    timeout: 300
   mcp-server-sqlite:
     cmd: mcp-server-sqlite
     enabled: true
+    args: []
+    envs: {}
     name: mcp-server-sqlite
+    type: stdio
+    timeout: 300
+  # mcp-server-brave-search:
+  #   cmd: mcp-server-brave-search
+  #   enabled: true
+  #   args: []
+  #   envs: {}
+  #   name: mcp-server-brave-search
+  #   type: stdio
+  #   timeout: 300
+  mcp-server-memory:
+    cmd: mcp-server-memory
+    enabled: true
+    args: []
+    envs: {}
+    name: mcp-server-memory
+    type: stdio
+    timeout: 300
+  # mcp-server-github:
+  #   cmd: mcp-server-github
+  #   enabled: true
+  #   args: []
+  #   envs: {}
+  #   name: mcp-server-github
+  #   type: stdio
+  #   timeout: 300
+  # mcp-server-redis:
+  #   cmd: mcp-server-redis
+  #   enabled: true
+  #   args: []
+  #   envs: {}
+  #   name: mcp-server-redis
+  #   type: stdio
+  #   timeout: 300
+  mcp-server-filesystem:
+    cmd: mcp-server-filesystem
+    enabled: true
+    args: [~/.goose/more/]
+    envs: {}
+    name: mcp-server-filesystem
+    type: stdio
+    timeout: 300
+  mcp-server-git:
+    cmd: mcp-server-git
+    enabled: true
+    args: []
+    envs: {}
+    name: mcp-server-git
+    type: stdio
+    timeout: 300
+  mcp-server-time:
+    cmd: mcp-server-time
+    enabled: true
+    args: [ --local-timezone, Asia/Jerusalem ]
+    envs: {}
+    name: mcp-server-time
+    type: stdio
+    timeout: 300
+  mcp-server-everything:
+    cmd: mcp-server-everything
+    enabled: true
+    args: []
+    envs: {}
+    name: mcp-server-everything
+    type: stdio
+    timeout: 300
+  # mcp-server-fetch:
+  #   cmd: mcp-server-fetch
+  #   enabled: true
+  #   args: []
+  #   envs: {}
+  #   name: mcp-server-fetch
+  #   type: stdio
+  #   timeout: 300
+  mcp-server-playwright:
+    cmd: mcp-server-playwright
+    enabled: true
+    args: []
+    envs: {}
+    name: mcp-server-playwright
+    type: stdio
+    timeout: 300
