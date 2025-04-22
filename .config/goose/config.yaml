@@ -1,9 +1,16 @@
 GOOSE_MODEL: final-Qwen--QwQ-32B.gguf
-GOOSE_CLI_MIN_PRIORITY: 0.0
-GOOSE_PROVIDER: openai
 OPENAI_BASE_PATH: v1/chat/completions
+GOOSE_PROVIDER: openai
 OPENAI_HOST: http://mahmooz2:5000
+GOOSE_CLI_MIN_PRIORITY: 0.0
 extensions:
+  # builtin ones start here
+  computercontroller:
+    display_name: Computer Controller
+    enabled: true
+    name: computercontroller
+    timeout: 300
+    type: builtin
   developer:
     display_name: Developer Tools
     enabled: true
@@ -16,99 +23,105 @@ extensions:
     name: memory
     timeout: 300
     type: builtin
-  mcp-server-sequential-thinking:
-    cmd: mcp-server-sequential-thinking
-    enabled: true
-    args: []
-    envs: {}
-    name: mcp-server-sequential-thinking
-    type: stdio
-    timeout: 300
-  mcp-server-sqlite:
-    cmd: mcp-server-sqlite
-    enabled: true
-    args: []
-    envs: {}
-    name: mcp-server-sqlite
-    type: stdio
-    timeout: 300
-  # mcp-server-brave-search:
-  #   cmd: mcp-server-brave-search
-  #   enabled: true
-  #   args: []
-  #   envs: {}
-  #   name: mcp-server-brave-search
-  #   type: stdio
-  #   timeout: 300
-  mcp-server-memory:
-    cmd: mcp-server-memory
-    enabled: true
-    args: []
-    envs: {}
-    name: mcp-server-memory
-    type: stdio
-    timeout: 300
-  # mcp-server-github:
-  #   cmd: mcp-server-github
-  #   enabled: true
-  #   args: []
-  #   envs: {}
-  #   name: mcp-server-github
-  #   type: stdio
-  #   timeout: 300
-  # mcp-server-redis:
-  #   cmd: mcp-server-redis
-  #   enabled: true
-  #   args: []
-  #   envs: {}
-  #   name: mcp-server-redis
-  #   type: stdio
-  #   timeout: 300
-  mcp-server-filesystem:
-    cmd: mcp-server-filesystem
-    enabled: true
-    args: [~/.goose/more/]
-    envs: {}
-    name: mcp-server-filesystem
-    type: stdio
-    timeout: 300
-  mcp-server-git:
-    cmd: mcp-server-git
-    enabled: true
-    args: []
-    envs: {}
-    name: mcp-server-git
-    type: stdio
-    timeout: 300
-  mcp-server-time:
-    cmd: mcp-server-time
-    enabled: true
-    args: [ --local-timezone, Asia/Jerusalem ]
-    envs: {}
-    name: mcp-server-time
-    type: stdio
-    timeout: 300
+  # mcp ones start here
   mcp-server-everything:
-    cmd: mcp-server-everything
-    enabled: true
     args: []
+    cmd: mcp-server-everything
+    description: null
+    enabled: true
     envs: {}
     name: mcp-server-everything
-    type: stdio
     timeout: 300
-  # mcp-server-fetch:
-  #   cmd: mcp-server-fetch
-  #   enabled: true
-  #   args: []
-  #   envs: {}
-  #   name: mcp-server-fetch
-  #   type: stdio
-  #   timeout: 300
+    type: stdio
+  mcp-server-filesystem:
+    args:
+    - ~/.goose/more/
+    cmd: mcp-server-filesystem
+    description: null
+    enabled: true
+    envs: {}
+    name: mcp-server-filesystem
+    timeout: 300
+    type: stdio
+  mcp-server-git:
+    args: []
+    cmd: mcp-server-git
+    description: null
+    enabled: true
+    envs: {}
+    name: mcp-server-git
+    timeout: 300
+    type: stdio
   mcp-server-playwright:
     cmd: mcp-server-playwright
+    description: null
     enabled: true
-    args: []
     envs: {}
     name: mcp-server-playwright
+    timeout: 2000
     type: stdio
+    args: []
+  mcp-server-sequential-thinking:
+    args: []
+    cmd: mcp-server-sequential-thinking
+    description: null
+    enabled: true
+    envs: {}
+    name: mcp-server-sequential-thinking
     timeout: 300
+    type: stdio
+  mcp-server-sqlite:
+    args:
+    - --db-path
+    - ~/.goose/db
+    cmd: mcp-server-sqlite
+    description: null
+    enabled: true
+    envs: {}
+    name: mcp-server-sqlite
+    timeout: 300
+    type: stdio
+  mcp-server-time:
+    args:
+    - --local-timezone
+    - Asia/Jerusalem
+    cmd: mcp-server-time
+    description: null
+    enabled: true
+    envs: {}
+    name: mcp-server-time
+    timeout: 300
+    type: stdio
+  mcp-server-searxng:
+    cmd: uvx
+    args: [ mcp-searxng ]
+    description: "search with a searxng instance"
+    enabled: true
+    envs: { SEARXNG_URL: "https://search.rhscz.eu/" }
+    name: mcp-server-searxng
+    timeout: 7000
+    type: stdio
+  mcp-tavily-search:
+    name: mcp-tavily-search
+    cmd: npx
+    args: [-y, mcp-tavily-search]
+    enabled: true
+    envs: {}
+    type: stdio
+    timeout: 7000
+  mcp-server-fetch:
+    name: mcp-server-fetch
+    cmd: mcp-server-fetch
+    args: []
+    enabled: true
+    envs: {}
+    type: stdio
+    timeout: 7000
+  mcp-wolfram-alpha:
+    name: mcp-wolfram-alpha
+    cmd: uvx
+    args: [ mcp-wolfram-alpha ]
+    enabled: true
+    envs: {}
+    type: stdio
+    timeout: 7000
