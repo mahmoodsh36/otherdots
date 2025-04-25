@@ -1,0 +1,11 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: llama-cpp:final-Qwen--QwQ-32B.gguf
+stream: false
+use_tools: all
+clients:
+- type: openai-compatible
+  name: llama-cpp
+  api_base: http://mahmooz2:5000/v1
+  models:
+  - name: final-Qwen--QwQ-32B.gguf

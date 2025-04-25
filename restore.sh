@@ -8,7 +8,8 @@ done
 
 mkdir "$HOME/.config/"
 for filename in alacritty compton.conf mimeapps.list mpv vifm qutebrowser kitty\
-	                  rofi sxhkd sxiv user-dirs.dirs zathura nushell wezterm xournalpp imv hypr goose; do
+                          rofi sxhkd sxiv user-dirs.dirs zathura nushell wezterm xournalpp imv\
+                          hypr goose aichat; do
     ln -sf "$HOME/work/otherdots/.config/$filename" "$HOME/.config/"
 done
 
