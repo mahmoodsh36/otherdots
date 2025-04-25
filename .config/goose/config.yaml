@@ -97,14 +97,14 @@ extensions:
     args: [ mcp-searxng ]
     description: "search with a searxng instance"
     enabled: true
-    envs: { SEARXNG_URL: "https://search.rhscz.eu/" }
+    envs: { SEARXNG_URL: "https://searx.mahmoodsh.com/" }
     name: mcp-server-searxng
     timeout: 7000
     type: stdio
   mcp-tavily-search:
     name: mcp-tavily-search
     cmd: npx
-    args: [-y, mcp-tavily-search]
+    args: [ -y, mcp-tavily-search ]
     enabled: true
     envs: {}
     type: stdio
