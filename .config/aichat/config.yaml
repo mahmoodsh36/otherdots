@@ -1,8 +1,17 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
 model: llama-cpp:Qwen/Qwen3-14B
-stream: true
+stream: false
+function_calling: true
+prelude: "default:main"
+repl_prelude: "default:main"
+agent_prelude: "default"
+save_shell_history: true
+compress_threshold: 12000
 use_tools: all
+instructions: null
+temperature: null
+top_p: null
 clients:
 - type: openai-compatible
   name: llama-cpp

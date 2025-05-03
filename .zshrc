@@ -200,3 +200,16 @@ sync_dir() {
 # some env vars
 # [ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
 # source ~/work/arch/env.sh
+
+# aichat integration
+_aichat_zsh() {
+    if [[ -n "$BUFFER" ]]; then
+        local _old=$BUFFER
+        BUFFER+="⌛"
+        zle -I && zle redisplay
+        BUFFER=$(aichat -e "$_old")
+        zle end-of-line
+    fi
+}
+zle -N _aichat_zsh
+bindkey '\ee' _aichat_zsh
