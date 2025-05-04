@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local scrollback_nvim = require("scrollback_nvim")
 
 local config = wezterm.config_builder()
 
@@ -56,5 +57,10 @@ config.keys = {
 
   {key="t", mods="ALT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
 }
+
+-- local nvim_utils = require 'nvim_utils'
+wezterm.log_info("config loaded?")
+
+table.insert(config.keys, scrollback_nvim.key)
 
 return config
