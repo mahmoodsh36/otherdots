@@ -1,12 +1,13 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
-model: llama-cpp:Qwen/Qwen3-14B
+model: whatever:Qwen/Qwen3-32B
 stream: false
 function_calling: true
 prelude: "default:main"
 repl_prelude: "default:main"
 agent_prelude: "default"
 save_shell_history: true
+max_tokens: 5
 compress_threshold: 12000
 use_tools: all
 instructions: null
@@ -14,7 +15,13 @@ temperature: null
 top_p: null
 clients:
 - type: openai-compatible
-  name: llama-cpp
+  name: whatever
   api_base: http://mahmooz2:5000/v1
   models:
   - name: Qwen/Qwen3-14B
+    # max_output_tokens: 131072
+    # max_input_tokens: 131072
+  - name: Qwen/QwQ-32B
+    # max_output_tokens: 16384
+    # max_input_tokens: 16384
+    # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)

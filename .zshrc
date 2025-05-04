@@ -197,7 +197,7 @@ sync_dir() {
   cp --delete ~/$1 mahmooz2:/home/mahmooz -e "ssh -i ~/brain/keys/hetzner1" --exclude 'nixos' # exclude nixos to not override per-machine settings
 }
 
-# some env vars
+# some env vars, dont use this!
 # [ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
 # source ~/work/arch/env.sh
 
@@ -213,3 +213,5 @@ _aichat_zsh() {
 }
 zle -N _aichat_zsh
 bindkey '\ee' _aichat_zsh
+
+alias aic="LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat"
