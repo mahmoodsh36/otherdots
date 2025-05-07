@@ -214,4 +214,10 @@ _aichat_zsh() {
 zle -N _aichat_zsh
 bindkey '\ee' _aichat_zsh
 
-alias aic="LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat"
+aic() {
+    source ~/brain/moredots/env.sh;
+    cd ~/work/llm-functions;
+    argc mcp start;
+    cd -
+    LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s $(date | tr ' ' '_') -r main
+}

@@ -1,27 +1,45 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
 model: whatever:Qwen/Qwen3-32B
+# model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
+keybindings: vi
+save_shell_history: true
+compress_threshold: 100000
 stream: false
 function_calling: true
-prelude: "default:main"
-repl_prelude: "default:main"
-agent_prelude: "default"
-save_shell_history: true
-max_tokens: 5
-compress_threshold: 12000
 use_tools: all
-instructions: null
-temperature: null
-top_p: null
+save_session: true
+
+# use session 'temp' by default
+prelude: "temp:main"
+repl_prelude: "temp:main"
+agent_prelude: "temp"
+
+# settings recommended for qwen
+temperature: 0.6
+min_p: 0.0
+top_p: 0.95
+top_k: 20
+
 clients:
 - type: openai-compatible
   name: whatever
   api_base: http://mahmooz2:5000/v1
   models:
   - name: Qwen/Qwen3-14B
+    include_reasoning: true
     # max_output_tokens: 131072
     # max_input_tokens: 131072
-  - name: Qwen/QwQ-32B
+  - name: Qwen/Qwen-32B
+    seed: 2
+    # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
     # max_output_tokens: 16384
     # max_input_tokens: 16384
-    # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
+- type: openai-compatible
+  name: openrouter
+  api_base: https://openrouter.ai/api/v1
+  models:
+    - name: deepseek/deepseek-r1:free
+    - name: nvidia/llama-3.1-nemotron-ultra-253b-v1:free
+      supports_function_calling: false
+    - name: mistralai/mistral-small-3.1-24b-instruct:free

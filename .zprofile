@@ -2,7 +2,7 @@
 export _JAVA_AWT_WM_NONREPARENTING=1.
 
 source /etc/profile # for guix
-export GUILE_LOAD_PATH="$HOME/workspace/guix/"
+export GUILE_LOAD_PATH="$HOME/work/guix/"
 # export QT_SCALE_FACTOR=2
 
 # for pipx packages and scripts etc
