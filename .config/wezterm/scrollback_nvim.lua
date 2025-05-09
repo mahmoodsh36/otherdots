@@ -45,14 +45,8 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
 
       -- give some meaningful name to the new tab
       window:active_tab():set_title(pane:get_title() .. "•log")
-
-      -- wait "enough" time for vim to read the file before we remove it.
-      -- The window creation and process spawn are asynchronous
-      -- wrt. running this script and are not awaitable, so we just pick
-      -- a number.
-      wezterm.sleep_ms(1000)
   else
-      print("Error opening file: " .. err)
+      print("error opening file: " .. err)
   end
 end)
 
