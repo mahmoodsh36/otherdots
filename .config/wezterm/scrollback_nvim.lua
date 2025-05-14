@@ -6,7 +6,7 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
   -- retrieve the current viewport's text.
   -- pass an optional number of lines (eg: 2000) to retrieve
   -- that number of lines starting from the bottom of the viewport
-  local scrollback = pane:get_lines_as_text()
+  local scrollback = pane:get_lines_as_text(200000)
 
   -- create a temporary file to pass to vim
   local nameWithoutExtension = os.tmpname()
@@ -23,7 +23,8 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
       f:flush()
       f:close()
 
-      ssh_domain_name = wezterm.mux.get_window(0):active_pane():get_domain_name()
+      -- ssh_domain_name = wezterm.mux.get_window(0):active_pane():get_domain_name()
+      ssh_domain_name = pane:get_domain_name()
       if ssh_domain_name ~= "local" then
           local cmd = string.format("scp %q %s:%q", name, ssh_domain_name, name)
           wezterm.log_info("running " .. cmd)
