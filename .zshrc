@@ -109,8 +109,8 @@ alias calc="bc -l"
 alias bde="bg; disown; exit"
 alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
-alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
-alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1'"
+alias cp="rsync -a --times --info=progress2 --exclude nixos" # --exclude 'venv'
+alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1' --exclude nixos"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
 alias ytdl='yt-dlp --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
 alias nrs="sudo nixos-rebuild switch"
@@ -214,10 +214,30 @@ _aichat_zsh() {
 zle -N _aichat_zsh
 bindkey '\ee' _aichat_zsh
 
-aic() {
-    source ~/brain/moredots/env.sh;
-    cd ~/work/llm-functions;
-    argc mcp start;
+ain() {
+    source ~/brain/moredots/env.sh
+    cd ~/work/llm-functions
+    argc mcp stop
+    argc mcp start
     cd -
     LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s $(date | tr ' ' '_') -r main
+}
+
+ai() {
+    role="$1"
+    [ -z "$role" ] && role="main"
+    pgrep mcp && {
+        LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s "$role"_$(date | tr ' ' '_') -r "$role"
+    } || {
+        echo starting mcp server
+        ain
+    }
+}
+
+aise() {
+    ai "se"
+}
+
+aim() {
+    ai "main"
 }

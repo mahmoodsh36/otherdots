@@ -1,10 +1,10 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
-model: whatever:Qwen/Qwen3-32B
+model: local:Qwen/Qwen3-14B
 # model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
 keybindings: vi
 save_shell_history: true
-compress_threshold: 100000
+compress_threshold: 200000
 stream: false
 function_calling: true
 use_tools: all
@@ -23,15 +23,14 @@ top_k: 20
 
 clients:
 - type: openai-compatible
-  name: whatever
+  name: local
   api_base: http://mahmooz2:5000/v1
   models:
   - name: Qwen/Qwen3-14B
     include_reasoning: true
     # max_output_tokens: 131072
     # max_input_tokens: 131072
-  - name: Qwen/Qwen-32B
-    seed: 2
+  - name: Qwen/QwQ-32B
     # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
     # max_output_tokens: 16384
     # max_input_tokens: 16384
