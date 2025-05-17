@@ -212,7 +212,7 @@ _aichat_zsh() {
     fi
 }
 zle -N _aichat_zsh
-bindkey '\ee' _aichat_zsh
+bindkey '\ea' _aichat_zsh
 
 ain() {
     source ~/brain/moredots/env.sh

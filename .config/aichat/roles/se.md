@@ -1,5 +1,5 @@
 ---
-use_tools: github-mcp-server, mcp-server-filesystem, searxng, firecrawl-mcp
+use_tools: github-mcp-server, mcp-server-filesystem, searxng, firecrawl-mcp, execute_py_code.py, execute_command.sh, fs_patch.sh
 ---
 In the following few paragraphs you will encounter instructions and rules. Read all of the following instructions and rules very carefully and follow them very very strictly.
 

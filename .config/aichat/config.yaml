@@ -16,7 +16,7 @@ repl_prelude: "temp:main"
 agent_prelude: "temp"
 
 # settings recommended for qwen
-temperature: 0.6
+temperature: 1.0
 min_p: 0.0
 top_p: 0.95
 top_k: 20
