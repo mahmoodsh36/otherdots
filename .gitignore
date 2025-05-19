@@ -3,3 +3,4 @@ history.txt
 .config/xournalpp/colornames.ini
 .config/xournalpp/plugins/
 .config/aichat/sessions/
+.config/aichat/rags/

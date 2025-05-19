@@ -1,6 +1,7 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
 model: local:Qwen/Qwen3-14B
+rag_embedding_model: local-embed:nomic-embed-text
 # model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
 keybindings: vi
 save_shell_history: true
@@ -21,6 +22,16 @@ min_p: 0.0
 top_p: 0.95
 top_k: 20
 
+# how RAG and `.file`/`--file` load files of specific formats.
+document_loaders:
+  # `$1` for input file and `$2` for output file. if `$2` is omitted, use stdout as output.
+  pdf: 'pdftotext $1 -'
+  docx: 'pandoc --to plain $1'
+  # jina: 'curl -fsSL https://r.jina.ai/$1 -H "Authorization: Bearer <jina_api_key>"'
+  # load a git repo with https://github.com/bodo-run/yek
+  # git: >
+  #   sh -c "yek $1 --json | jq '[.[] | { path: .filename, contents: .content }]'"
+
 clients:
 - type: openai-compatible
   name: local
@@ -34,6 +45,14 @@ clients:
     # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
     # max_output_tokens: 16384
     # max_input_tokens: 16384
+- type: openai-compatible
+  name: local-embed
+  api_base: http://mahmooz2:5001/v1
+  models:
+  - name: nomic-embed-text
+    type: embedding
+    default_chunk_size: 7000
+    max_batch_size: 200
 - type: openai-compatible
   name: openrouter
   api_base: https://openrouter.ai/api/v1
