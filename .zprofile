@@ -12,6 +12,6 @@ export PATH="$HOME/.local/bin/:$PATH"
 # source ~/work/arch/env.sh
 
 # some env vars
-[ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
+# [ -f ~/brain/moredots/env.sh ] && source ~/brain/moredots/env.sh
 
 # export HYPRLAND_INSTANCE_SIGNATURE=$(hyprctl instances | head -1 | cut -d ' ' -f2 | tr -d ':')

@@ -214,6 +214,12 @@ _aichat_zsh() {
 zle -N _aichat_zsh
 bindkey '\ea' _aichat_zsh
 
+# shorthand
+aia() {
+    # use sub-shell to avoid persistent effects from 'source'
+    ( source ~/brain/moredots/env.sh && LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s "unnamed"_$(date | tr ' ' '_') "$@" )
+}
+
 ain() {
     source ~/brain/moredots/env.sh
     cd ~/work/llm-functions
@@ -234,10 +240,15 @@ ai() {
     }
 }
 
+# dev/software-engineer?
 aise() {
     ai "se"
 }
-
+# main: research, math, programming, etc
 aim() {
     ai "main"
+}
+# remote
+air() {
+    aia --model openrouter:deepseek/deepseek-r1:free --role remote
 }

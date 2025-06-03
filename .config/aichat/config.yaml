@@ -1,12 +1,11 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
 model: local:Qwen/Qwen3-14B
-rag_embedding_model: local-embed:nomic-embed-text
 # model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
 keybindings: vi
 save_shell_history: true
-compress_threshold: 200000
-stream: false
+compress_threshold: 100000
+stream: true
 function_calling: true
 use_tools: all
 save_session: true
@@ -17,16 +16,20 @@ repl_prelude: "temp:main"
 agent_prelude: "temp"
 
 # settings recommended for qwen
-temperature: 1.0
+temperature: 0.7
 min_p: 0.0
 top_p: 0.95
 top_k: 20
 
+# rag config
+rag_embedding_model: local-embed:nomic-embed-text
+rag_top_k: 5
 # how RAG and `.file`/`--file` load files of specific formats.
 document_loaders:
   # `$1` for input file and `$2` for output file. if `$2` is omitted, use stdout as output.
   pdf: 'pdftotext $1 -'
   docx: 'pandoc --to plain $1'
+  org: 'cat $1'
   # jina: 'curl -fsSL https://r.jina.ai/$1 -H "Authorization: Bearer <jina_api_key>"'
   # load a git repo with https://github.com/bodo-run/yek
   # git: >
@@ -37,6 +40,7 @@ clients:
   name: local
   api_base: http://mahmooz2:5000/v1
   models:
+  - name: XiaomiMiMo/MiMo-VL-7B-RL
   - name: Qwen/Qwen3-14B
     include_reasoning: true
     # max_output_tokens: 131072
@@ -51,13 +55,63 @@ clients:
   models:
   - name: nomic-embed-text
     type: embedding
-    default_chunk_size: 7000
-    max_batch_size: 200
+    default_chunk_size: 500
+    max_batch_size: 10
+- type: gemini
+  # https://github.com/sigoden/aichat/blob/4fecd67007595469f6deb4b78d9f12388939810c/config.example.yaml#L144
+  name: gemini
+  api_base: https://generativelanguage.googleapis.com/v1beta
+  models:
+    # https://ai.google.dev/gemini-api/docs/models
+    - name: gemini-2.0-flash
+    - name: gemini-2.5-flash-preview-05-20
+    - name: gemini-2.5-gemma-3-27b-it
+  patch:
+    chat_completions:
+      '.*':
+        body:
+          safetySettings:
+            - category: HARM_CATEGORY_HARASSMENT
+              threshold: BLOCK_NONE
+            - category: HARM_CATEGORY_HATE_SPEECH
+              threshold: BLOCK_NONE
+            - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
+              threshold: BLOCK_NONE
+            - category: HARM_CATEGORY_DANGEROUS_CONTENT
+              threshold: BLOCK_NONE
 - type: openai-compatible
   name: openrouter
   api_base: https://openrouter.ai/api/v1
   models:
+    - name: meta-llama/llama-4-maverick:free
+      supports_function_calling: true
     - name: deepseek/deepseek-r1:free
+      supports_function_calling: false
+    - name: deepseek/deepseek-r1-0528:free
+      supports_function_calling: false
     - name: nvidia/llama-3.1-nemotron-ultra-253b-v1:free
       supports_function_calling: false
     - name: mistralai/mistral-small-3.1-24b-instruct:free
+      supports_function_calling: false
+    - name: microsoft/phi-4-reasoning-plus:free
+      supports_function_calling: false
+    - name: deepseek/deepseek-prover-v2:free
+      supports_function_calling: false
+    - name: qwen/qwen3-235b-a22b:free
+      supports_function_calling: false
+    - name: tngtech/deepseek-r1t-chimera:free
+      supports_function_calling: false
+    - name: thudm/glm-z1-32b:free
+      supports_function_calling: false
+    - name: mistralai/devstral-small:free
+      supports_function_calling: false
+    - name: arliai/qwq-32b-arliai-rpr-v1:free
+      supports_function_calling: false
+    - name: nvidia/llama-3.1-nemotron-ultra-253b-v1:free
+      supports_function_calling: false
+    - name: meta-llama/llama-4-maverick:free
+      supports_function_calling: false
+    - name: deepseek/deepseek-chat-v3-0324:free
+      supports_function_calling: false
+    - name: qwen/qwq-32b:free
+      supports_function_calling: false
