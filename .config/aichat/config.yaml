@@ -45,7 +45,10 @@ clients:
     include_reasoning: true
     # max_output_tokens: 131072
     # max_input_tokens: 131072
+  - name: XiaomiMiMo/MiMo-VL-7B-RL
   - name: Qwen/QwQ-32B
+  - name: XiaomiMiMo/MiMo-7B-RL-0530
+  - name: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
     # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
     # max_output_tokens: 16384
     # max_input_tokens: 16384
