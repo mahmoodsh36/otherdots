@@ -1,6 +1,6 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
-model: local:Qwen/Qwen3-14B
+model: local:XiaomiMiMo/MiMo-VL-7B-RL
 # model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
 keybindings: vi
 save_shell_history: true
@@ -22,7 +22,7 @@ top_p: 0.95
 top_k: 20
 
 # rag config
-rag_embedding_model: local-embed:nomic-embed-text
+rag_embedding_model: local-embed:Qwen/Qwen3-Embedding-0.6B
 rag_top_k: 5
 # how RAG and `.file`/`--file` load files of specific formats.
 document_loaders:
@@ -56,6 +56,10 @@ clients:
   name: local-embed
   api_base: http://mahmooz2:5001/v1
   models:
+  - name: Qwen/Qwen3-Embedding-0.6B
+    type: embedding
+    default_chunk_size: 500
+    max_batch_size: 10
   - name: nomic-embed-text
     type: embedding
     default_chunk_size: 500
