@@ -62,7 +62,9 @@ else
 fi
 
 # prompt
-if [ -n "$SSH_CLIENT" ] || ps -o comm= -p $PPID | grep -q 'wezterm-mux-ser'; then
+if [ ! -z "$container" ]; then
+  export PS1="podman %1~ λ "
+elif [ -n "$SSH_CLIENT" ] || ps -o comm= -p $PPID | grep -q 'wezterm-mux-ser'; then
   ip_addr=$(ip addr | grep 'inet\s' | grep -v '127.0.0.1' | tr -s ' ' | cut -d ' ' -f3 | cut -d'/' -f1 | head -1)
   export PS1="$ip_addr %1~ λ "
 elif [[ ! -z "$IN_NIX_SHELL" ]]; then
@@ -109,10 +111,10 @@ alias calc="bc -l"
 alias bde="bg; disown; exit"
 alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
-alias cp="rsync -a --times --info=progress2 --exclude nixos" # --exclude 'venv'
+alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1' --exclude nixos"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
-alias ytdl='yt-dlp --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
+alias ytdl='yt-dlp --embed-metadata --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
 alias nrs="sudo nixos-rebuild switch"
 alias ncu="sudo nix-channel --update"
 alias tra="transmission-remote"
