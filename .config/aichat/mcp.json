@@ -1,0 +1,80 @@
+{
+  "mcpServers": {
+    "sqlite": {
+      "prefix": false,
+      "command": "mcp-server-sqlite",
+      "args": [
+        "--db-path",
+        "~/.cache/aichat/db"
+      ]
+    },
+    "firecrawl-mcp": {
+      "prefix": false,
+      "command": "zsh",
+      "args": [
+        "-c",
+        "source ~/brain/moredots/env.sh; npx -y firecrawl-mcp"
+      ]
+    },
+    "mcp-server-filesystem": {
+      "prefix": false,
+      "command": "mcp-server-filesystem",
+      "args": [
+        "~/.cache/aichat/",
+        "~/"
+      ]
+    },
+    "mcp-server-time": {
+      "prefix": false,
+      "command": "mcp-server-time",
+      "args": [
+        "--local-timezone",
+        "Asia/Jerusalem"
+      ]
+    },
+    "github-mcp-server": {
+      "prefix": false,
+      "command": "zsh",
+      "args": [
+        "-c",
+        "source ~/brain/moredots/env.sh; github-mcp-server stdio"
+      ],
+      "env": {
+        "GITHUB_DYNAMIC_TOOLSETS": "1"
+      }
+    },
+    "mcp-server-sequential-thinking": {
+      "prefix": false,
+      "command": "mcp-server-sequential-thinking",
+      "args": [
+      ]
+    },
+    "mcp-tavily-search": {
+      "prefix": false,
+      "command": "zsh",
+      "args": [
+        "-c",
+        "source ~/brain/moredots/env.sh; npx -y mcp-tavily-search"
+      ]
+    },
+    "mcp-server-qdrant": {
+      "prefix": false,
+      "command": "zsh",
+      "args": [
+        "-c",
+        "uvx mcp-server-qdrant"
+      ],
+      "env": {
+        "QDRANT_URL": "http://localhost:6333",
+        "COLLECTION_NAME": "books",
+        "EMBEDDING_MODEL": "BAAI/bge-small-en-v1.5"
+      }
+    },
+    "mcp-server-playwright": {
+      "prefix": false,
+      "command": "mcp-server-playwright",
+      "args": [
+      ]
+    }
+  }
+}
