@@ -6,7 +6,7 @@
   <property name="pressureMultiplier" value="1"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/mahmooz/brain/notes/data/55/1be021-fac3-40ff-b398-7f9b928d96f8"/>
+  <property name="lastSavePath" value="/home/mahmooz"/>
   <property name="lastOpenPath" value="/home/mahmooz/dl"/>
   <property name="lastImagePath" value="/home/mahmooz"/>
   <property name="edgePanSpeed" value="20"/>
@@ -216,8 +216,8 @@
     </data>
   </data>
   <data name="lastUsedPageBgColor">
-    <attribute name="color00" type="hex" value="ff000000"/>
-    <attribute name="color01" type="hex" value="ffffffff"/>
+    <attribute name="color00" type="hex" value="fffafaf9"/>
+    <attribute name="color01" type="hex" value="ff000000"/>
     <attribute name="color02" type="hex" value="ffffffff"/>
     <attribute name="color03" type="hex" value="ffffffff"/>
     <attribute name="color04" type="hex" value="ffffffff"/>

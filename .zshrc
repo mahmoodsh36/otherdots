@@ -113,6 +113,7 @@ alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
 alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1' --exclude nixos"
+alias cp2="rsync -a --times --info=progress2"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
 alias ytdl='yt-dlp --embed-metadata --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
 alias nrs="sudo nixos-rebuild switch"
@@ -253,4 +254,17 @@ aim() {
 # remote
 air() {
     aia --model openrouter:deepseek/deepseek-r1:free --role remote
+}
+
+# https://medium.com/@billcava/terminal-ai-how-llm-changed-my-workflow-71ef97ddab5b
+alias gc='git commit -m "$(git diff HEAD | llm -s "write a conventional commit message (feat/fix/docs/style/refactor) with scope")" -e'
+searchpro() {
+    cmd=$(llm -s "generate the most efficient search command for: $1")
+    echo "Generated command: $cmd"
+    read -p "Execute? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        eval "$cmd"
+    fi
 }

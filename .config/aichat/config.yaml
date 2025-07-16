@@ -4,7 +4,7 @@ model: local:XiaomiMiMo/MiMo-VL-7B-RL
 # model: openrouter:nvidia/llama-3.1-nemotron-ultra-253b-v1:free
 keybindings: vi
 save_shell_history: true
-compress_threshold: 100000
+compress_threshold: 80000
 stream: true
 function_calling: true
 use_tools: all
@@ -40,7 +40,6 @@ clients:
   name: local
   api_base: http://mahmooz2:5000/v1
   models:
-  - name: XiaomiMiMo/MiMo-VL-7B-RL
   - name: Qwen/Qwen3-14B
     include_reasoning: true
     # max_output_tokens: 131072
@@ -48,6 +47,9 @@ clients:
   - name: XiaomiMiMo/MiMo-VL-7B-RL
   - name: Qwen/QwQ-32B
   - name: XiaomiMiMo/MiMo-7B-RL-0530
+  - name: mistral
+    max_input_tokens: 40960
+    supports_function_calling: true
   - name: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
     # require_max_tokens: true # may be needed for koboldcpp (which needs a max token number set)
     # max_output_tokens: 16384
@@ -58,7 +60,8 @@ clients:
   models:
   - name: Qwen/Qwen3-Embedding-0.6B
     type: embedding
-    default_chunk_size: 500
+    default_chunk_size: 1024
+    max_tokens_per_chunk: 1536
     max_batch_size: 10
   - name: nomic-embed-text
     type: embedding
@@ -122,3 +125,10 @@ clients:
       supports_function_calling: false
     - name: qwen/qwq-32b:free
       supports_function_calling: false
+- type: openai
+  name: chutes
+  api_base: https://llm.chutes.ai/v1
+  models:
+    - name: deepseek-ai/DeepSeek-R1
+      supports_function_calling: false
+    - name: chutesai/Mistral-Small-3.2-24B-Instruct-2506
