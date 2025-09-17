@@ -16,10 +16,9 @@ repl_prelude: "temp:main"
 agent_prelude: "temp"
 
 # settings recommended for qwen
-temperature: 0.7
+temperature: 1.1
 min_p: 0.0
 top_p: 0.95
-top_k: 20
 
 # rag config
 rag_embedding_model: local-embed:Qwen/Qwen3-Embedding-0.6B
@@ -93,6 +92,8 @@ clients:
   name: openrouter
   api_base: https://openrouter.ai/api/v1
   models:
+    - name: qwen/qwen3-coder:free
+      supports_function_calling: true
     - name: meta-llama/llama-4-maverick:free
       supports_function_calling: true
     - name: deepseek/deepseek-r1:free
