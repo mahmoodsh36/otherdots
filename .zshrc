@@ -144,7 +144,7 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # command history
 HISTSIZE=1000000000
 SAVEHIST=1000000000
-HISTFILE=~/brain/zsh_history
+HISTFILE=$BRAIN_DIR/zsh_history
 
 IFS='
 '
@@ -220,12 +220,12 @@ bindkey '\ea' _aichat_zsh
 # shorthand
 aia() {
     # use sub-shell to avoid persistent effects from 'source'
-    ( source ~/brain/moredots/env.sh && LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s "unnamed"_$(date | tr ' ' '_') "$@" )
+    ( source $BRAIN_DIR/moredots/env.sh && LLM_DUMP_RESULTS='.*' LLM_MCP_SKIP_CONFIRM='.*' LLM_MCP_NEED_CONFIRM='' aichat -s "unnamed"_$(date | tr ' ' '_') "$@" )
 }
 
 ain() {
-    source ~/brain/moredots/env.sh
-    cd ~/work/llm-functions
+    source $BRAIN_DIR/moredots/env.sh
+    cd $WORK_DIR/llm-functions
     argc mcp stop
     argc mcp start
     cd -

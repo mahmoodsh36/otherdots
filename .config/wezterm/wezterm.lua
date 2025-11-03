@@ -28,7 +28,7 @@ config.ssh_domains = {
 }
 
 config.font = wezterm.font('iosevka')
-config.font_size = 10.0
+config.font_size = 13.0
 
 -- for persistent multiplexing sessions (like tmux)
 config.unix_domains = {
@@ -60,6 +60,9 @@ config.keys = {
 
   {key="t", mods="ALT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
 }
+
+config.initial_rows = 36
+config.initial_cols = 160
 
 -- local nvim_utils = require 'nvim_utils'
 wezterm.log_info("config loaded?")
