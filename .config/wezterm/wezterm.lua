@@ -6,6 +6,9 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Batman'
 config.enable_scroll_bar = true
 
+config.window_decorations = "NONE"
+config.enable_wayland = true
+
 config.ssh_domains = {
   {
     name = 'mahmooz2',

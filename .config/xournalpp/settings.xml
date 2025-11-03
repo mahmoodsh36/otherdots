@@ -6,8 +6,8 @@
   <property name="pressureMultiplier" value="1"/>
   <property name="zoomGesturesEnabled" value="true"/>
   <property name="selectedToolbar" value="Portrait"/>
-  <property name="lastSavePath" value="/home/mahmooz"/>
-  <property name="lastOpenPath" value="/home/mahmooz/dl"/>
+  <property name="lastSavePath" value="/home/mahmooz/brain/notes/data/9a/058ad1-d6cf-46e6-ad6f-6796d5a0c26c"/>
+  <property name="lastOpenPath" value="/home/mahmooz/brain/out"/>
   <property name="lastImagePath" value="/home/mahmooz"/>
   <property name="edgePanSpeed" value="20"/>
   <property name="edgePanMaxMult" value="5"/>
@@ -256,11 +256,11 @@
       <attribute name="drawingType" type="string" value="spline"/>
     </data>
     <data name="highlighter">
-      <attribute name="color" type="hex" value="6272a4"/>
+      <attribute name="color" type="hex" value="00ff00"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="255"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="BIG"/>
     </data>
     <data name="image">
       <attribute name="drawingType" type="string" value="default"/>
