@@ -160,7 +160,7 @@ load_plugins() {
 load_plugins 2>/dev/null
 
 # ssh issues with kitty fix
-export TERM=xterm-256color
+# export TERM=xterm-256color
 export EDITOR=nvim
 
 # for macos

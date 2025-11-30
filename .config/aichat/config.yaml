@@ -42,6 +42,9 @@ clients:
   api_base: http://localhost:5000/v1
   api_key: none
   models:
+  - name: WeiboAI/VibeThinker-1.5B
+    require_max_tokens: true
+    max_output_tokens: 30000
   - name: qwen
   - name: Qwen/Qwen3-14B
     include_reasoning: true

@@ -57,19 +57,6 @@
         "source ~/brain/moredots/env.sh; npx -y mcp-tavily-search"
       ]
     },
-    "mcp-server-qdrant": {
-      "prefix": false,
-      "command": "zsh",
-      "args": [
-        "-c",
-        "uvx mcp-server-qdrant"
-      ],
-      "env": {
-        "QDRANT_URL": "http://localhost:6333",
-        "COLLECTION_NAME": "books",
-        "EMBEDDING_MODEL": "BAAI/bge-small-en-v1.5"
-      }
-    },
     "mcp-server-playwright": {
       "prefix": false,
       "command": "mcp-server-playwright",
