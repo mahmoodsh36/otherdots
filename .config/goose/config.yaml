@@ -1,8 +1,21 @@
-GOOSE_MODEL: final-Qwen--QwQ-32B.gguf
+# https://block.github.io/goose/docs/guides/config-files/
+GOOSE_MODEL: default_model
 OPENAI_BASE_PATH: v1/chat/completions
 GOOSE_PROVIDER: openai
-OPENAI_HOST: http://mahmooz2:5000
+OPENAI_HOST: http://localhost:5002
+OPENAI_API_KEY: 
+GOOSE_CONTEXT_LIMIT: 200000
+
+# tool configuration
 GOOSE_CLI_MIN_PRIORITY: 0.0
+# for models that dont have tool calling support
+GOOSE_TOOLSHIM: true
+
+# recipe configuration
+GOOSE_RECIPE_GITHUB_REPO: "block/goose-recipes"
+
+GOOSE_CONTEXT_STRATEGY: "summarize"
+
 extensions:
   # builtin ones start here
   computercontroller:
@@ -23,16 +36,14 @@ extensions:
     name: memory
     timeout: 300
     type: builtin
-  # mcp ones start here
-  mcp-server-everything:
-    args: []
-    cmd: mcp-server-everything
-    description: null
-    enabled: true
-    envs: {}
-    name: mcp-server-everything
+  tutorial:
+    bundled: true
+    display_name: Tutorial
+    enabled: false
+    name: tutorial
     timeout: 300
-    type: stdio
+    type: builtin
+  # mcp ones start here
   mcp-server-filesystem:
     args:
     - ~/.goose/more/
@@ -70,58 +81,35 @@ extensions:
     name: mcp-server-sequential-thinking
     timeout: 300
     type: stdio
-  mcp-server-sqlite:
+  mcp-tavily-search:
+    name: mcp-tavily-search
+    cmd: npx
     args:
-    - --db-path
-    - ~/.goose/db
-    cmd: mcp-server-sqlite
-    description: null
+    - -y
+    - mcp-tavily-search
     enabled: true
     envs: {}
-    name: mcp-server-sqlite
-    timeout: 300
     type: stdio
-  mcp-server-time:
+    timeout: 7000
+  fetch:
     args:
-    - --local-timezone
-    - Asia/Jerusalem
-    cmd: mcp-server-time
+    - mcp-server-fetch
+    available_tools: []
+    bundled: null
+    cmd: uvx
     description: null
     enabled: true
+    env_keys: []
     envs: {}
-    name: mcp-server-time
+    name: fetch
     timeout: 300
-    type: stdio
+    type: stdio0
   mcp-server-searxng:
     cmd: uvx
-    args: [ mcp-searxng ]
+    - mcp-searxng
     description: "search with a searxng instance"
     enabled: true
     envs: { SEARXNG_URL: "https://searx.mahmoodsh.com/" }
     name: mcp-server-searxng
     timeout: 7000
     type: stdio
-  mcp-tavily-search:
-    name: mcp-tavily-search
-    cmd: npx
-    args: [ -y, mcp-tavily-search ]
-    enabled: true
-    envs: {}
-    type: stdio
-    timeout: 7000
-  mcp-server-fetch:
-    name: mcp-server-fetch
-    cmd: mcp-server-fetch
-    args: []
-    enabled: true
-    envs: {}
-    type: stdio
-    timeout: 7000
-  mcp-wolfram-alpha:
-    name: mcp-wolfram-alpha
-    cmd: uvx
-    args: [ mcp-wolfram-alpha ]
-    enabled: true
-    envs: {}
-    type: stdio
-    timeout: 7000
