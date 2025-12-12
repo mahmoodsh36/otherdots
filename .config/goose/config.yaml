@@ -1,9 +1,8 @@
-# https://block.github.io/goose/docs/guides/config-files/
 GOOSE_MODEL: default_model
 OPENAI_BASE_PATH: v1/chat/completions
 GOOSE_PROVIDER: openai
 OPENAI_HOST: http://localhost:5002
-OPENAI_API_KEY: 
+OPENAI_API_KEY: mykey
 GOOSE_CONTEXT_LIMIT: 200000
 
 # tool configuration
@@ -106,6 +105,7 @@ extensions:
     type: stdio0
   mcp-server-searxng:
     cmd: uvx
+    args:
     - mcp-searxng
     description: "search with a searxng instance"
     enabled: true
@@ -113,3 +113,21 @@ extensions:
     name: mcp-server-searxng
     timeout: 7000
     type: stdio
+  github:
+    type: stdio
+    cmd: npx
+    args: ["-y", "mcp-remote", "https://api.githubcopilot.com/mcp/"]
+    enabled: false
+    timeout: 300
+  mcpuithing:
+    enabled: true
+    type: streamable_http
+    name: mcp ui thing
+    description: mcp ui thing
+    uri: https://mcp-aharvard.netlify.app/mcp
+    envs: {}
+    env_keys: []
+    headers: {}
+    timeout: 300
+    bundled: null
+    available_tools: []
