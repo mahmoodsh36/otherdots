@@ -112,7 +112,7 @@ alias bde="bg; disown; exit"
 alias psg="ps -e | grep -i"
 alias mt="file --mime-type -b"
 # alias cp="rsync -a --times --info=progress2 --exclude nixos --exclude 'venv'"
-alias cp="rsync -a --times --exclude nixos --exclude 'venv'"
+alias cp="rsync -a --times --exclude nixos --exclude 'venv' --exclude '.venv' --progress"
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1' --exclude nixos"
 alias cp2="rsync -a --times --info=progress2"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
@@ -255,7 +255,6 @@ air() {
 }
 
 # https://medium.com/@billcava/terminal-ai-how-llm-changed-my-workflow-71ef97ddab5b
-alias gc='git commit -m "$(git diff HEAD | llm -s "write a conventional commit message (feat/fix/docs/style/refactor) with scope")" -e'
 searchpro() {
     cmd=$(llm -s "generate the most efficient search command for: $1")
     echo "Generated command: $cmd"
@@ -266,3 +265,6 @@ searchpro() {
         eval "$cmd"
     fi
 }
+
+# better search interface
+bindkey '^r' atuin-up-search
