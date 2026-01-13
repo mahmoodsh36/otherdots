@@ -9,8 +9,8 @@ done
 mkdir "$HOME/.config/"
 for filename in alacritty compton.conf mimeapps.list mpv vifm qutebrowser kitty\
                           rofi sxhkd sxiv user-dirs.dirs zathura nushell wezterm xournalpp imv\
-                          hypr goose aichat; do
-    ln -sf "$HOME_DIR/otherdots/.config/$filename" "$HOME/.config/"
+                          hypr goose aichat opencode; do
+    ln -sf "$WORK_DIR/otherdots/.config/$filename" "$HOME/.config/"
 done
 
 mkdir ~/.config/transmission-daemon
