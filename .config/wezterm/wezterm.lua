@@ -26,8 +26,8 @@ config.ssh_domains = {
     username = 'mahmooz',
   },
   {
-    name = 'mahmooz1',
-    remote_address = 'mahmooz1',
+    name = 'mahmooz4',
+    remote_address = 'mahmooz4',
     username = 'mahmooz',
   },
 }
