@@ -6,7 +6,8 @@ local config = wezterm.config_builder()
 config.color_scheme = 'Batman'
 config.enable_scroll_bar = true
 
-config.window_decorations = "NONE"
+-- "RESIZE" makes it disable the titlebar
+config.window_decorations = "RESIZE"
 config.enable_wayland = true
 
 config.ssh_domains = {

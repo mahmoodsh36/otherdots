@@ -35,7 +35,7 @@ wezterm.on("trigger-vim-with-scrollback", function(window, pane)
       window:perform_action(
           wezterm.action({
               SpawnCommandInNewTab = {
-                  args = { "nvim", name, "+$" },
+                  args = { "/etc/profiles/per-user/mahmooz/bin/nvim", name, "+$" },
                   set_environment_variables = {
                       NVIM_LOG_MODE = "true",
                   },
