@@ -268,6 +268,7 @@ searchpro() {
 
 # better search interface
 if command -v atuin >/dev/null 2>&1; then
-    eval "$(atuin init zsh)"
+    # the eval thing binds some keys that i dont like like esc+k
+    # eval "$(atuin init zsh)"
     bindkey '^R' atuin-up-search
 fi
