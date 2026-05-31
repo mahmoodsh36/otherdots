@@ -3,7 +3,7 @@ local scrollback_nvim = require("scrollback_nvim")
 
 local config = wezterm.config_builder()
 
-config.color_scheme = 'Batman'
+-- config.color_scheme = 'Batman'
 config.enable_scroll_bar = true
 
 -- "RESIZE" makes it disable the titlebar
@@ -33,7 +33,7 @@ config.ssh_domains = {
   },
 }
 
-config.font = wezterm.font('iosevka')
+config.font = wezterm.font('fantasque sans mono')
 config.font_size = 13.0
 
 -- for persistent multiplexing sessions (like tmux)
@@ -69,6 +69,8 @@ config.keys = {
 
 config.initial_rows = 36
 config.initial_cols = 160
+
+config.scrollback_lines = 50000
 
 -- local nvim_utils = require 'nvim_utils'
 wezterm.log_info("config loaded?")
