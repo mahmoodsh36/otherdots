@@ -81,8 +81,6 @@ alias grep="grep --color=auto"
 alias o="xdg-open"
 alias vim="nvim"
 alias v="vim"
-alias pi="sudo pacman -S --noconfirm"
-alias pq="pacman -Ss"
 alias history='history 1'
 alias ytadl='youtube-dl -f bestaudio --extract-audio --add-metadata'
 alias gc="git commit -a -m"
