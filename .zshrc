@@ -1,14 +1,28 @@
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return # this breaks emacs M-x shell
 # disabled vi mode in zsh for now, i use emacs vterm
 # cursor handling for vi-mode
-function zle-keymap-select zle-line-init zle-line-finish {
+function _cursor_shape_for_keymap {
  case $KEYMAP in
   vicmd)         echo -ne '\e[1 q';;
   viins|main)    echo -ne '\e[5 q';;
  esac
+}
 
+# NOTE: do not call `zle reset-prompt` from zle-line-finish. it fires as the
+# line is accepted, so it repaints prompt+buffer over the line we're leaving
+# with a bare \r and no clear -- whatever was longer underneath survives, which
+# shows up as duplicated/garbled text (worse with syntax highlighting, which
+# repaints the same line in colour). reset-prompt belongs in keymap-select.
+function zle-keymap-select {
+ _cursor_shape_for_keymap
  zle reset-prompt
  zle -R
+}
+function zle-line-init {
+ _cursor_shape_for_keymap
+}
+function zle-line-finish {
+ echo -ne '\e[1 q'
 }
 zle -N zle-line-init
 zle -N zle-line-finish
@@ -53,7 +67,7 @@ setopt INC_APPEND_HISTORY_TIME
 setopt interactivecomments
 setopt EXTENDED_HISTORY # save <beginning time>:<elapsed seconds>;<command>
 
-if ; then
+if ps -o comm= -p $PPID | grep -q 'wezterm-mux-ser'; then
     echo "Running over WezTerm SSH"
 elif ps -o comm= -p $PPID | grep -q 'sshd'; then
     echo "Running over OpenSSH"
