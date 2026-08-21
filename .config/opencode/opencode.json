@@ -1,30 +1,31 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode-go/glm-5.2",
+  "permission": "allow",
   "agent": {
     "build": {
-      "model": "opencode-go/mimo-v2.5-pro"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "plan": {
-      "model": "opencode-go/glm-5.2"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "general": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "explore": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "scout": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "compaction": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "summary": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     },
     "title": {
-      "model": "opencode-go/deepseek-v4-flash"
+      "model": "opencode-go/muse-spark-1.2-contributor"
     }
   },
   "provider": {
@@ -39,7 +40,7 @@
         "gpt-oss": {
           "name": "gpt-oss:20b",
           "limit": {
-            "context": 100000,
+            "context": 200000,
             "output": 50000
           },
           "options": {
@@ -51,7 +52,7 @@
         "qwen/qwen3-coder-30b": {
           "name": "qwen-coder",
           "limit": {
-            "context": 100000,
+            "context": 200000,
             "output": 50000
           }
         }
