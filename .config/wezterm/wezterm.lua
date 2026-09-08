@@ -10,6 +10,29 @@ config.enable_scroll_bar = true
 config.window_decorations = "RESIZE"
 config.enable_wayland = true
 
+local function file_exists(path)
+  local f = io.open(path, "r")
+  if f then f:close() return true end
+  return false
+end
+
+-- venus accelerates vulkan only, its gl is too old for wezterm so mesa falls back to software llvmpipe. webgpu is the gpu frontend here.
+local vm_env = os.getenv("IS_VM")
+local is_vm = (vm_env == "1") or (vm_env ~= "0" and file_exists("/run/opengl-driver/share/vulkan/icd.d/virtio_icd.aarch64.json"))
+if is_vm then
+  config.front_end = "WebGpu"
+  local ok, gpus = pcall(function() return wezterm.gui.enumerate_gpus() end)
+  if ok and gpus then
+    for _, gpu in ipairs(gpus) do
+      if gpu.backend == "Vulkan" and gpu.device_type ~= "Cpu" then
+        config.webgpu_preferred_adapter = gpu
+        break
+      end
+    end
+  end
+  config.animation_fps = 1
+end
+
 config.ssh_domains = {
   {
     name = 'mahmooz2',
