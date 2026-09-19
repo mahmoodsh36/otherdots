@@ -4,31 +4,48 @@
   "permission": "allow",
   "agent": {
     "build": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "plan": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "general": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "explore": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "scout": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "compaction": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "summary": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     },
     "title": {
-      "model": "opencode-go/muse-spark-1.2-contributor"
+      "model": "opencode-go/muse-spark-1.3-contributor",
+      "variant": "xhigh"
     }
   },
   "provider": {
+    "opencode-go": {
+      "models": {
+        "muse-spark-1.3-contributor": {
+          "options": {
+            "reasoningEffort": "xhigh"
+          }
+        }
+      }
+    },
     "local": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "local models",
