@@ -88,6 +88,12 @@ config.keys = {
   {key="j", mods="ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
 
   {key="t", mods="ALT", action=wezterm.action{SpawnTab="CurrentPaneDomain"}},
+
+  {key="b", mods="ALT", action=wezterm.action.ScrollByPage(-1)},
+  {key="f", mods="ALT", action=wezterm.action.ScrollByPage(1)},
+
+  {key="b", mods="ALT|SHIFT", action=wezterm.action.ScrollByLine(-1)},
+  {key="f", mods="ALT|SHIFT", action=wezterm.action.ScrollByLine(1)},
 }
 
 config.initial_rows = 36
