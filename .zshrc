@@ -128,7 +128,7 @@ alias cp="rsync -a --times --exclude nixos --exclude 'venv' --exclude '.venv' --
 alias cp1="rsync -a --times --info=progress2 -e 'ssh -i ~/brain/keys/hetzner1' --exclude nixos"
 alias cp2="rsync -a --times --info=progress2"
 alias fr="adb reverse tcp:5000 tcp:5000; flutter run"
-alias ytdl='yt-dlp --embed-metadata --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
+alias ytdl='yt-dlp --embed-metadata --embed-subs --write-subs --write-auto-subs --sub-langs "en.*" --convert-subs srt --trim-filenames 65 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"'
 alias nrs="sudo nixos-rebuild switch"
 alias ncu="sudo nix-channel --update"
 alias tra="transmission-remote"
