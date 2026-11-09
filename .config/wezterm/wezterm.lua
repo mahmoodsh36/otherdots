@@ -16,6 +16,17 @@ local function file_exists(path)
   return false
 end
 
+-- watch the dir, not the file: quickshell/theming/apply.sh renames new files into place
+local theme_dir = (os.getenv("XDG_STATE_HOME") or (os.getenv("HOME") .. "/.local/state")) .. "/theme"
+if file_exists(theme_dir .. "/wezterm.lua") then
+  wezterm.add_to_config_reload_watch_list(theme_dir)
+  local ok, theme = pcall(dofile, theme_dir .. "/wezterm.lua")
+  if ok and type(theme) == "table" then
+    config.colors = theme.colors
+    config.window_frame = theme.window_frame
+  end
+end
+
 -- venus accelerates vulkan only, its gl is too old for wezterm so mesa falls back to software llvmpipe. webgpu is the gpu frontend here.
 local vm_env = os.getenv("IS_VM")
 local is_vm = (vm_env == "1") or (vm_env ~= "0" and file_exists("/run/opengl-driver/share/vulkan/icd.d/virtio_icd.aarch64.json"))

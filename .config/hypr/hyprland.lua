@@ -49,12 +49,23 @@ local mainMod = "SUPER"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd(terminal)
-    hl.exec_cmd("swww-daemon & disown; swww img ~/.cache/wallpaper")
     hl.exec_cmd("sudo python ~/work/keys/keys.py -d")
 end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+
+-- written by quickshell/theming/apply.sh, which also live-applies it via hyprctl eval
+local borders = {
+    active_border = { colors = {"rgba(aa5555ee)", "rgba(aa5599ee)"}, angle = 45 },
+    inactive_border = "rgba(595959aa)",
+}
+local state_home = os.getenv("XDG_STATE_HOME") or ((os.getenv("HOME") or "") .. "/.local/state")
+local ok, theme = pcall(dofile, state_home .. "/theme/hyprland.lua")
+if ok and type(theme) == "table" then
+    borders.active_border = theme.active_border or borders.active_border
+    borders.inactive_border = theme.inactive_border or borders.inactive_border
+end
 
 hl.config({
     general = {
@@ -62,8 +73,8 @@ hl.config({
         gaps_out = 5,
         border_size = 2,
         col = {
-            active_border = { colors = {"rgba(aa5555ee)", "rgba(aa5599ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border = borders.active_border,
+            inactive_border = borders.inactive_border,
         },
         allow_tearing = false,
         layout = "scroller", -- scroller plugin
