@@ -67,6 +67,13 @@ if ok and type(theme) == "table" then
     borders.inactive_border = theme.inactive_border or borders.inactive_border
 end
 
+-- virtio-gpu only scans out XRGB8888 and hyprland hides non-scanout formats, so GL clients lose alpha
+local virtio_gpu = io.open("/sys/module/virtio_gpu")
+if virtio_gpu then
+    virtio_gpu:close()
+    hl.config({ quirks = { skip_non_kms_dmabuf_formats = false } })
+end
+
 hl.config({
     general = {
         gaps_in = 5,
